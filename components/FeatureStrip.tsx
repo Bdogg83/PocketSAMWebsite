@@ -13,7 +13,7 @@ const features: { icon: LucideIcon; color: string; title: string; text: string }
     icon: Pill,
     color: "text-green-accent bg-green-accent/10",
     title: "Manage Medications",
-    text: "Never miss a dose with smart reminders and tracking.",
+    text: "Stay on top of doses with reminders and tracking.",
   },
   {
     icon: Heart,
