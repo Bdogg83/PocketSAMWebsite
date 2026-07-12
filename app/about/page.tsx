@@ -107,7 +107,7 @@ export default function AboutPage() {
 
             <StoryParagraph>
               PocketSAM is a caregiver coordination app designed to help families manage
-              medications, appointments, care tasks, notes, contacts, and communication in
+              medications, appointments, care tasks, notes, contacts, and shared care information in
               one simple, supportive place. It was built for real families, real
               caregivers, and real moments when keeping everything together matters most.
             </StoryParagraph>

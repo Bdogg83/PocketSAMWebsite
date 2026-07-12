@@ -86,9 +86,9 @@ const featureSections: {
   {
     icon: AlertTriangle,
     color: "text-orange-400 bg-orange-400/10",
-    title: "Emergency Mode",
+    title: "Emergency Info",
     description:
-      "Quick access to important information when it matters most—designed for peace of mind in urgent moments.",
+      "Keep important medical and contact information organized when it matters most.",
     href: "/features/emergency-info",
   },
   {
