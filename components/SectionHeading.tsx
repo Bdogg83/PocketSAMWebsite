@@ -1,7 +1,7 @@
 interface SectionHeadingProps {
   label?: string;
   title: React.ReactNode;
-  subtitle?: string;
+  subtitle?: React.ReactNode;
   centered?: boolean;
   className?: string;
 }
