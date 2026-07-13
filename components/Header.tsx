@@ -27,11 +27,11 @@ export default function Header() {
   return (
     <header className="sticky top-0 z-50 border-b border-gray-border/60 bg-white/95 backdrop-blur-md">
       <Container>
-        <div className="flex h-16 items-center gap-2 sm:h-[72px] sm:gap-3">
+        <div className="relative flex h-16 items-center justify-between gap-2 sm:h-[72px] sm:gap-3">
           <Link
             href="/"
             aria-label="PocketSAM home"
-            className="min-w-0 flex-1 overflow-hidden"
+            className="relative z-10 min-w-0 shrink-0 overflow-hidden"
           >
             <PocketSAMLogo
               priority
@@ -39,7 +39,10 @@ export default function Header() {
             />
           </Link>
 
-          <nav className="hidden items-center gap-8 lg:flex" aria-label="Main navigation">
+          <nav
+            className="absolute left-1/2 top-1/2 hidden -translate-x-1/2 -translate-y-1/2 items-center gap-8 lg:flex"
+            aria-label="Main navigation"
+          >
             {navLinks.map((link) => (
               <Link
                 key={link.href}
@@ -56,7 +59,7 @@ export default function Header() {
             ))}
           </nav>
 
-          <div className="hidden items-center gap-3 lg:flex">
+          <div className="relative z-10 hidden items-center gap-3 lg:flex">
             <span className="rounded-full bg-green-pale px-3 py-1 text-xs font-semibold text-teal-deep">
               Beta
             </span>
@@ -65,7 +68,7 @@ export default function Header() {
 
           <button
             type="button"
-            className="shrink-0 rounded-xl p-2 text-teal-deep transition-colors hover:bg-cream lg:hidden"
+            className="relative z-10 shrink-0 rounded-xl p-2 text-teal-deep transition-colors hover:bg-cream lg:hidden"
             onClick={() => setMobileOpen(!mobileOpen)}
             aria-expanded={mobileOpen}
             aria-controls="mobile-menu"
