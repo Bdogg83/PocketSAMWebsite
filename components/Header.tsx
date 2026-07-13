@@ -27,9 +27,12 @@ export default function Header() {
   return (
     <header className="sticky top-0 z-50 border-b border-gray-border/60 bg-white/95 backdrop-blur-md">
       <Container>
-        <div className="flex h-[72px] items-center justify-between">
-          <Link href="/" aria-label="PocketSAM home" className="shrink-0">
-            <PocketSAMLogo priority className="h-[52px] w-auto max-w-[200px]" />
+        <div className="flex h-[72px] items-center justify-between gap-3">
+          <Link href="/" aria-label="PocketSAM home" className="min-w-0 shrink">
+            <PocketSAMLogo
+              priority
+              className="h-10 w-auto max-w-[calc(100vw-7rem)] sm:h-[52px] sm:max-w-[200px]"
+            />
           </Link>
 
           <nav className="hidden items-center gap-8 lg:flex" aria-label="Main navigation">
@@ -58,7 +61,7 @@ export default function Header() {
 
           <button
             type="button"
-            className="rounded-xl p-2 text-teal-deep transition-colors hover:bg-cream lg:hidden"
+            className="shrink-0 rounded-xl p-2 text-teal-deep transition-colors hover:bg-cream lg:hidden"
             onClick={() => setMobileOpen(!mobileOpen)}
             aria-expanded={mobileOpen}
             aria-controls="mobile-menu"
