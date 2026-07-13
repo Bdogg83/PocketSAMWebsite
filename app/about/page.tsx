@@ -49,11 +49,12 @@ function StoryParagraph({ children }: { children: React.ReactNode }) {
 export default function AboutPage() {
   return (
     <>
-      <section className="bg-cream py-16 lg:py-24">
+      <section className="bg-cream pt-8 pb-10 lg:pt-10 lg:pb-12">
         <Container>
           <div className="mx-auto max-w-3xl">
             <SectionHeading
               centered
+              className="mb-0"
               title="Our Story"
               subtitle={
                 <>
@@ -68,9 +69,9 @@ export default function AboutPage() {
         </Container>
       </section>
 
-      <section className="py-16 lg:py-24">
+      <section className="pb-12 lg:pb-16">
         <Container>
-          <div className="mx-auto max-w-3xl space-y-6">
+          <div className="mx-auto max-w-3xl space-y-5">
             <StoryParagraph>
               My husband, Brian, built PocketSAM after watching me, Samantha — Sam — care
               for my mom during her cancer journey. He saw the daily weight that caregiving
@@ -124,7 +125,7 @@ export default function AboutPage() {
               Hope for more time. Hope for a cure.
             </StoryParagraph>
 
-            <div className="space-y-3 rounded-3xl bg-green-pale p-6 sm:p-8">
+            <div className="space-y-2 rounded-3xl bg-green-pale p-5 sm:p-6">
               <p className="text-base font-semibold text-teal-deep sm:text-lg">
                 Patients fighting cancer deserve nothing less.
               </p>
@@ -144,27 +145,28 @@ export default function AboutPage() {
         </Container>
       </section>
 
-      <section className="bg-cream py-16 lg:py-24">
+      <section className="bg-cream pt-10 pb-12 lg:pt-12 lg:pb-16">
         <Container>
           <SectionHeading
             centered
+            className="mb-4 lg:mb-6"
             title="What SAM means"
             subtitle="Our name reflects the heart of what we do."
           />
 
-          <div className="mx-auto grid max-w-4xl gap-8 sm:grid-cols-3">
+          <div className="mx-auto grid max-w-4xl gap-6 sm:grid-cols-3">
             {samValues.map(({ letter, word, icon: Icon, color, description }) => (
               <div
                 key={word}
-                className="rounded-3xl border border-gray-border bg-white p-8 text-center shadow-soft transition-all hover:shadow-soft-lg"
+                className="rounded-3xl border border-gray-border bg-white p-6 text-center shadow-soft transition-all hover:shadow-soft-lg"
               >
                 <div
-                  className={`mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-2xl ${color.split(" ")[1]}`}
+                  className={`mx-auto mb-3 flex h-14 w-14 items-center justify-center rounded-2xl ${color.split(" ")[1]}`}
                 >
-                  <Icon className={`h-8 w-8 ${color.split(" ")[0]}`} aria-hidden="true" />
+                  <Icon className={`h-7 w-7 ${color.split(" ")[0]}`} aria-hidden="true" />
                 </div>
-                <p className="mb-1 text-3xl font-bold text-teal-deep">{letter}</p>
-                <h3 className="mb-3 text-lg font-bold text-teal-deep">{word}</h3>
+                <p className="mb-1 text-2xl font-bold text-teal-deep">{letter}</p>
+                <h3 className="mb-2 text-lg font-bold text-teal-deep">{word}</h3>
                 <p className="text-sm leading-relaxed text-gray-soft">{description}</p>
               </div>
             ))}

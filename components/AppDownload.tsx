@@ -48,7 +48,8 @@ export default function AppDownload({
               Your pocket caregiver is always with you.
             </h2>
             <p className="mt-2 text-sm leading-relaxed text-gray-soft sm:text-base">
-              PocketSAM is preparing for launch. Join the early access list and be first to know when it is available.
+              PocketSAM is in beta testing now. The app and full website experience are coming
+              soon. Join the waitlist and be first to know when we launch.
             </p>
           </div>
 

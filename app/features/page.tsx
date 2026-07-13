@@ -110,7 +110,7 @@ const featureSections: {
 export default function FeaturesPage() {
   return (
     <>
-      <section className="bg-cream py-16 lg:py-24">
+      <section className="bg-cream pt-8 pb-10 lg:pt-10 lg:pb-12">
         <Container>
           <SectionHeading
             centered
@@ -121,7 +121,7 @@ export default function FeaturesPage() {
         </Container>
       </section>
 
-      <section className="py-16 lg:py-24">
+      <section className="pb-16 lg:pb-24">
         <Container>
           <div className="grid gap-8 sm:grid-cols-2 lg:gap-10">
             {featureSections.map(({ icon: Icon, color, title, description, href }) => {
