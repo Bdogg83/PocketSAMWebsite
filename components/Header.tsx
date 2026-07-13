@@ -27,11 +27,15 @@ export default function Header() {
   return (
     <header className="sticky top-0 z-50 border-b border-gray-border/60 bg-white/95 backdrop-blur-md">
       <Container>
-        <div className="flex h-[72px] items-center justify-between gap-3">
-          <Link href="/" aria-label="PocketSAM home" className="min-w-0 shrink">
+        <div className="flex h-16 items-center gap-2 sm:h-[72px] sm:gap-3">
+          <Link
+            href="/"
+            aria-label="PocketSAM home"
+            className="min-w-0 flex-1 overflow-hidden"
+          >
             <PocketSAMLogo
               priority
-              className="h-10 w-auto max-w-[calc(100vw-7rem)] sm:h-[52px] sm:max-w-[200px]"
+              className="h-10 w-10 max-w-full object-contain object-left sm:h-12 sm:w-12"
             />
           </Link>
 

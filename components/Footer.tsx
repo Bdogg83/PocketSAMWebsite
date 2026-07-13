@@ -19,7 +19,7 @@ export default function Footer() {
       <Container className="py-8 lg:py-10">
         <div className="flex flex-col items-center gap-6 lg:flex-row lg:items-center lg:justify-between">
           <div className="text-center lg:text-left">
-            <PocketSAMLogo className="mx-auto h-14 w-auto max-w-[180px] object-contain lg:mx-0" />
+            <PocketSAMLogo className="mx-auto h-14 w-14 object-contain lg:mx-0" />
           </div>
 
           <nav

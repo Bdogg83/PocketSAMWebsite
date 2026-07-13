@@ -12,8 +12,8 @@ export function PocketSAMLogo({
     <Image
       src="/PocketSAM.png"
       alt="PocketSAM logo"
-      width={220}
-      height={120}
+      width={200}
+      height={200}
       priority={priority}
       className={`object-contain ${className}`}
     />
