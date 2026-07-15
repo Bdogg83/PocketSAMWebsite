@@ -1,6 +1,11 @@
 import { NextResponse } from "next/server";
+import { Resend } from "resend";
+
+export const runtime = "nodejs";
 
 const CONTACT_EMAIL = "info@pocketsam.com";
+// pocketsam.com is verified in Resend, so we can send from the domain.
+const FROM_EMAIL = "PocketSAM Website <info@pocketsam.com>";
 
 type FormPayload = {
   formType?: string;
@@ -17,6 +22,37 @@ const subjects: Record<string, string> = {
   story: "PocketSAM website — Story submission",
   waitlist: "PocketSAM website — Waitlist signup",
 };
+
+const GENERIC_ERROR =
+  "Unable to send your message. Please try again or email info@pocketsam.com.";
+
+function escapeHtml(input: string): string {
+  return input
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#39;");
+}
+
+function renderHtml(subject: string, fields: Array<[string, string]>): string {
+  const rows = fields
+    .map(
+      ([label, value]) =>
+        `<tr>
+          <td style="padding:6px 12px;font-weight:bold;vertical-align:top;white-space:nowrap">${escapeHtml(
+            label
+          )}</td>
+          <td style="padding:6px 12px">${escapeHtml(value).replace(/\n/g, "<br />")}</td>
+        </tr>`
+    )
+    .join("");
+
+  return `<div style="font-family:Arial,Helvetica,sans-serif;color:#1f2937">
+    <h2 style="margin:0 0 16px">${escapeHtml(subject)}</h2>
+    <table style="border-collapse:collapse">${rows}</table>
+  </div>`;
+}
 
 export async function POST(request: Request) {
   try {
@@ -39,14 +75,10 @@ export async function POST(request: Request) {
       );
     }
 
-    const payload: Record<string, string> = {
-      name,
-      email,
-      _replyto: email,
-      _subject: subjects[formType] || subjects.contact,
-      _template: "table",
-      form: formType,
-    };
+    const fields: Array<[string, string]> = [
+      ["Name", name],
+      ["Email", email],
+    ];
 
     if (formType === "contact") {
       const message = body.message?.trim() || "";
@@ -56,10 +88,8 @@ export async function POST(request: Request) {
           { status: 400 }
         );
       }
-      payload.message = message;
-    }
-
-    if (formType === "story") {
+      fields.push(["Message", message]);
+    } else if (formType === "story") {
       const role = body.role?.trim() || "";
       const story = body.story?.trim() || "";
       if (!role || !story) {
@@ -68,49 +98,40 @@ export async function POST(request: Request) {
           { status: 400 }
         );
       }
-      payload.role = role;
-      payload.story = story;
-      payload.can_feature = body.canFeature ? "Yes" : "No";
+      fields.push(["Role", role]);
+      fields.push(["Story", story]);
+      fields.push(["Can feature", body.canFeature ? "Yes" : "No"]);
+    } else if (formType === "waitlist") {
+      fields.push(["Message", "Please add me to the PocketSAM waitlist."]);
     }
 
-    if (formType === "waitlist") {
-      payload.message = "Please add me to the PocketSAM waitlist.";
+    const apiKey = process.env.RESEND_API_KEY;
+    if (!apiKey) {
+      console.error("RESEND_API_KEY is not set; cannot send email.");
+      return NextResponse.json({ error: GENERIC_ERROR }, { status: 500 });
     }
 
-    const response = await fetch(
-      `https://formsubmit.co/ajax/${CONTACT_EMAIL}`,
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Accept: "application/json",
-        },
-        body: JSON.stringify(payload),
-      }
-    );
+    const resend = new Resend(apiKey);
+    const subject = subjects[formType] || subjects.contact;
+    const text = fields.map(([label, value]) => `${label}: ${value}`).join("\n");
 
-    const result = await response.json().catch(() => ({}));
+    const { data, error } = await resend.emails.send({
+      from: FROM_EMAIL,
+      to: [CONTACT_EMAIL],
+      replyTo: email,
+      subject,
+      text,
+      html: renderHtml(subject, fields),
+    });
 
-    if (!response.ok) {
-      return NextResponse.json(
-        {
-          error:
-            typeof result.message === "string"
-              ? result.message
-              : "Unable to send your message. Please try again or email info@pocketsam.com.",
-        },
-        { status: 502 }
-      );
+    if (error) {
+      console.error("Resend failed to send email:", error);
+      return NextResponse.json({ error: GENERIC_ERROR }, { status: 502 });
     }
 
-    return NextResponse.json({ success: true });
-  } catch {
-    return NextResponse.json(
-      {
-        error:
-          "Unable to send your message. Please try again or email info@pocketsam.com.",
-      },
-      { status: 500 }
-    );
+    return NextResponse.json({ success: true, id: data?.id ?? null });
+  } catch (err) {
+    console.error("send-email route error:", err);
+    return NextResponse.json({ error: GENERIC_ERROR }, { status: 500 });
   }
 }
