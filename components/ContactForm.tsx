@@ -46,7 +46,7 @@ export default function ContactForm() {
         setError(
           typeof result.error === "string"
             ? result.error
-            : "Unable to send your message. Please try again or email info@pocketsam.com."
+            : "Unable to send your message. Please try again or email admin@pocketsam.com."
         );
         return;
       }
@@ -54,7 +54,7 @@ export default function ContactForm() {
       setSubmitted(true);
     } catch {
       setError(
-        "Unable to send your message. Please try again or email info@pocketsam.com."
+        "Unable to send your message. Please try again or email admin@pocketsam.com."
       );
     } finally {
       setSubmitting(false);

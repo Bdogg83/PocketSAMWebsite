@@ -3,9 +3,9 @@ import { Resend } from "resend";
 
 export const runtime = "nodejs";
 
-const CONTACT_EMAIL = "info@pocketsam.com";
+const CONTACT_EMAIL = "admin@pocketsam.com";
 // pocketsam.com is verified in Resend, so we can send from the domain.
-const FROM_EMAIL = "PocketSAM Website <info@pocketsam.com>";
+const FROM_EMAIL = "PocketSAM Website <admin@pocketsam.com>";
 
 type FormPayload = {
   formType?: string;
@@ -24,7 +24,7 @@ const subjects: Record<string, string> = {
 };
 
 const GENERIC_ERROR =
-  "Unable to send your message. Please try again or email info@pocketsam.com.";
+  "Unable to send your message. Please try again or email admin@pocketsam.com.";
 
 function escapeHtml(input: string): string {
   return input

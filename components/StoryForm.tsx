@@ -57,7 +57,7 @@ export default function StoryForm() {
         setError(
           typeof result.error === "string"
             ? result.error
-            : "Unable to send your story. Please try again or email info@pocketsam.com."
+            : "Unable to send your story. Please try again or email admin@pocketsam.com."
         );
         return;
       }
@@ -65,7 +65,7 @@ export default function StoryForm() {
       setSubmitted(true);
     } catch {
       setError(
-        "Unable to send your story. Please try again or email info@pocketsam.com."
+        "Unable to send your story. Please try again or email admin@pocketsam.com."
       );
     } finally {
       setSubmitting(false);

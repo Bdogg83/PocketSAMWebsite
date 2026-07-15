@@ -10,7 +10,7 @@ const footerLinks = [
 ];
 
 const socialLinks = [
-  { href: "mailto:info@pocketsam.com", label: "Email", icon: Mail },
+  { href: "mailto:admin@pocketsam.com", label: "Email", icon: Mail },
 ];
 
 export default function Footer() {

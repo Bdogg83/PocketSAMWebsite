@@ -45,7 +45,7 @@ export default function EarlyAccessForm() {
         setError(
           typeof result.error === "string"
             ? result.error
-            : "Unable to join the waitlist. Please try again or email info@pocketsam.com."
+            : "Unable to join the waitlist. Please try again or email admin@pocketsam.com."
         );
         return;
       }
@@ -53,7 +53,7 @@ export default function EarlyAccessForm() {
       setSubmitted(true);
     } catch {
       setError(
-        "Unable to join the waitlist. Please try again or email info@pocketsam.com."
+        "Unable to join the waitlist. Please try again or email admin@pocketsam.com."
       );
     } finally {
       setSubmitting(false);
