@@ -28,7 +28,7 @@ export default function WhyPocketSAM() {
                 src="/sam-photo.png"
                 alt="A warm portrait of family showing love, strength, and care"
                 fill
-                className="object-cover object-[center_20%]"
+                className="object-cover object-center"
                 sizes="(max-width: 1024px) 100vw, 560px"
               />
               <div
