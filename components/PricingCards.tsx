@@ -3,12 +3,14 @@ import { Container } from "./ui";
 import SectionHeading from "./SectionHeading";
 
 const plan = {
-  name: "PocketSAM Plan",
+  name: "PocketSAM",
   price: "$9.99",
   period: "/month",
+  trial: "30-day free trial",
   features: [
     "Patient account",
-    "Unlimited caregivers",
+    "Up to 5 caregivers included",
+    "$1.99/month for each additional caregiver",
     "Medication tracking",
     "Appointments",
     "Daily check-ins",
@@ -18,6 +20,7 @@ const plan = {
     "Doctor-ready reports",
     "Care Circle sharing",
     "Emergency info",
+    "Cancel anytime",
   ],
 };
 
@@ -33,7 +36,7 @@ export default function PricingCards({ showHeading = true }: PricingCardsProps) 
           <SectionHeading
             centered
             title="Simple, transparent pricing."
-            subtitle="One plan with every feature and unlimited caregivers."
+            subtitle="One plan with every feature. Up to 5 caregivers included."
           />
         )}
 
@@ -44,6 +47,7 @@ export default function PricingCards({ showHeading = true }: PricingCardsProps) 
               <span className="text-4xl font-bold text-teal-deep">{plan.price}</span>
               <span className="text-gray-soft">{plan.period}</span>
             </div>
+            <p className="mt-2 text-sm text-gray-soft">{plan.trial}</p>
 
             <p className="mt-5 mb-3 text-sm font-semibold text-teal-deep">Includes:</p>
             <ul className="space-y-2.5">
@@ -73,7 +77,7 @@ export default function PricingCards({ showHeading = true }: PricingCardsProps) 
 
         {showHeading && (
           <p className="mt-8 text-center text-sm text-gray-soft">
-            PocketSAM is in beta. Full launch and 14-day free trial coming soon.
+            PocketSAM is in beta. Full launch and 30-day free trial coming soon.
           </p>
         )}
       </Container>

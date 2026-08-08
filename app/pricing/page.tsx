@@ -6,7 +6,7 @@ import PricingCards from "@/components/PricingCards";
 export const metadata: Metadata = {
   title: "Pricing",
   description:
-    "Simple, transparent pricing for PocketSAM. One plan with every feature and unlimited caregivers.",
+    "Simple, transparent pricing for PocketSAM. $9.99/month after a 30-day free trial, with up to 5 caregivers included.",
 };
 
 const faqs = [
@@ -17,12 +17,17 @@ const faqs = [
   },
   {
     question: "Is there a free trial?",
-    answer: "A 14-day free trial is planned at launch.",
+    answer:
+      "Yes. PocketSAM includes a 30-day free trial. After the trial, the plan is $9.99/month.",
   },
   {
     question: "Can I add multiple caregivers?",
     answer:
-      "Yes. The PocketSAM Plan includes unlimited caregivers so your whole care circle can stay connected.",
+      "Yes. Your plan includes up to 5 caregivers. Additional caregivers beyond the first 5 are $1.99/month each.",
+  },
+  {
+    question: "Can I cancel anytime?",
+    answer: "Yes. You can cancel your PocketSAM subscription at any time.",
   },
   {
     question: "Is this a medical device?",
@@ -41,7 +46,7 @@ export default function PricingPage() {
             className="mb-0"
             label="Pricing"
             title="Simple, transparent pricing."
-            subtitle="One plan with every feature and unlimited caregivers."
+            subtitle="One plan with every feature. Up to 5 caregivers included."
           />
         </Container>
       </section>
@@ -51,7 +56,7 @@ export default function PricingPage() {
       <section className="pb-12 lg:pb-16">
         <Container>
           <p className="mb-8 text-center text-sm text-gray-soft">
-            PocketSAM is in beta. Full launch and 14-day free trial coming soon.
+            PocketSAM is in beta. Full launch and 30-day free trial coming soon.
           </p>
 
           <SectionHeading centered className="mb-4 lg:mb-6" title="Frequently asked questions" />

@@ -7,10 +7,13 @@ const CONTACT_EMAIL = "admin@pocketsam.com";
 // pocketsam.com is verified in Resend, so we can send from the domain.
 const FROM_EMAIL = "PocketSAM Website <admin@pocketsam.com>";
 
+const PHONE_TYPES = ["Apple / iPhone", "Android"] as const;
+
 type FormPayload = {
   formType?: string;
   name?: string;
   email?: string;
+  phoneType?: string;
   message?: string;
   role?: string;
   story?: string;
@@ -81,13 +84,19 @@ export async function POST(request: Request) {
     ];
 
     if (formType === "contact") {
+      const phoneType = body.phoneType?.trim() || "";
       const message = body.message?.trim() || "";
-      if (!message) {
+      if (
+        !phoneType ||
+        !PHONE_TYPES.includes(phoneType as (typeof PHONE_TYPES)[number]) ||
+        !message
+      ) {
         return NextResponse.json(
           { error: "Please fill in all fields." },
           { status: 400 }
         );
       }
+      fields.push(["Phone Type", phoneType]);
       fields.push(["Message", message]);
     } else if (formType === "story") {
       const role = body.role?.trim() || "";

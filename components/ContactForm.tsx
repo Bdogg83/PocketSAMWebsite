@@ -4,9 +4,13 @@ import { useState, FormEvent } from "react";
 import { Container, ButtonPrimary } from "./ui";
 import SectionHeading from "./SectionHeading";
 
+const PHONE_TYPES = ["Apple / iPhone", "Android"] as const;
+type PhoneType = (typeof PHONE_TYPES)[number];
+
 export default function ContactForm() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
+  const [phoneType, setPhoneType] = useState<PhoneType | "">("");
   const [message, setMessage] = useState("");
   const [submitted, setSubmitted] = useState(false);
   const [submitting, setSubmitting] = useState(false);
@@ -16,7 +20,7 @@ export default function ContactForm() {
     e.preventDefault();
     setError("");
 
-    if (!name.trim() || !email.trim() || !message.trim()) {
+    if (!name.trim() || !email.trim() || !phoneType || !message.trim()) {
       setError("Please fill in all fields.");
       return;
     }
@@ -36,6 +40,7 @@ export default function ContactForm() {
           formType: "contact",
           name: name.trim(),
           email: email.trim(),
+          phoneType,
           message: message.trim(),
         }),
       });
@@ -105,6 +110,33 @@ export default function ContactForm() {
               disabled={submitting}
             />
           </div>
+
+          <fieldset>
+            <legend className="mb-1.5 block text-sm font-medium text-teal-deep">
+              Phone Type
+            </legend>
+            <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
+              {PHONE_TYPES.map((option) => {
+                const selected = phoneType === option;
+                return (
+                  <button
+                    key={option}
+                    type="button"
+                    aria-pressed={selected}
+                    onClick={() => setPhoneType(option)}
+                    disabled={submitting}
+                    className={`rounded-2xl border px-4 py-3 text-sm font-medium transition-colors focus:outline-none focus:ring-2 focus:ring-teal-primary/20 disabled:cursor-not-allowed disabled:opacity-60 ${
+                      selected
+                        ? "border-teal-primary bg-teal-primary/10 text-teal-deep"
+                        : "border-gray-border bg-white text-gray-soft hover:border-teal-primary/50"
+                    }`}
+                  >
+                    {option}
+                  </button>
+                );
+              })}
+            </div>
+          </fieldset>
 
           <div>
             <label htmlFor="contact-message" className="mb-1.5 block text-sm font-medium text-teal-deep">
