@@ -3,7 +3,11 @@ import { Mail } from "lucide-react";
 import { PocketSAMLogo, Container } from "./ui";
 
 const footerLinks = [
+  { href: "/features", label: "Features" },
+  { href: "/pricing", label: "Pricing" },
   { href: "/about", label: "About Us" },
+  { href: "/tutorials", label: "Tutorials" },
+  { href: "/blog", label: "Blog" },
   { href: "/contact", label: "Contact" },
   { href: "/privacy", label: "Privacy Policy" },
   { href: "/terms", label: "Terms of Service" },

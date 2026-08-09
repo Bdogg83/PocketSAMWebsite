@@ -4,9 +4,18 @@ import SectionHeading from "@/components/SectionHeading";
 import { Heart, Eye, Layers } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "About Us",
+  title: "About PocketSAM — Built for Caregivers",
   description:
-    "Our Story — PocketSAM was born from love, family, and one simple belief: caregivers deserve care, too.",
+    "Learn why PocketSAM was created: a caregiver app born from love, family, and the belief that caregivers deserve care, too.",
+  alternates: {
+    canonical: "/about",
+  },
+  openGraph: {
+    title: "About PocketSAM — Built for Caregivers",
+    description:
+      "PocketSAM was born from love, family, and one simple belief: caregivers deserve care, too.",
+    url: "https://pocketsam.com/about",
+  },
 };
 
 const caregivingTruths = [
@@ -53,6 +62,7 @@ export default function AboutPage() {
         <Container>
           <div className="mx-auto max-w-3xl">
             <SectionHeading
+              as="h1"
               centered
               className="mb-0"
               title="Our Story"

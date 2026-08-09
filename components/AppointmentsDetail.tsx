@@ -68,13 +68,13 @@ export default function AppointmentsDetail() {
               Appointments
             </p>
             <h1 className="text-2xl font-bold leading-tight tracking-tight text-teal-deep sm:text-3xl lg:text-4xl text-balance">
-              Keep every visit organized in one shared{" "}
+              Appointment tracking in one shared caregiver{" "}
               <GreenAccent>calendar.</GreenAccent>
             </h1>
             <p className="mt-4 text-sm leading-relaxed text-gray-soft sm:text-base">
-              Organize appointments in a shared calendar with provider details, locations, notes,
-              and customizable reminders. Reusable visit templates make recurring care easier to
-              schedule.
+              Organize medical appointments with provider details, locations, notes, and
+              customizable reminders. PocketSAM’s shared caregiver calendar and reusable visit
+              templates make recurring care easier to schedule.
             </p>
           </div>
         </Container>

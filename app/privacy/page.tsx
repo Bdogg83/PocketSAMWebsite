@@ -5,6 +5,9 @@ import { Container } from "@/components/ui";
 export const metadata: Metadata = {
   title: "Privacy Policy",
   description: "PocketSAM privacy policy — how we handle your information.",
+  alternates: {
+    canonical: "/privacy",
+  },
 };
 
 const sections = [

@@ -5,9 +5,18 @@ import SectionHeading from "@/components/SectionHeading";
 import StoryForm from "@/components/StoryForm";
 
 export const metadata: Metadata = {
-  title: "Blog",
+  title: "Caregiving Stories & Blog",
   description:
-    "Read stories from the PocketSAM community and share your own experience with caregiving and care coordination.",
+    "Read stories from the PocketSAM community and share your own experience with caregiving, family care coordination, and caring for a loved one.",
+  alternates: {
+    canonical: "/blog",
+  },
+  openGraph: {
+    title: "Caregiving Stories & Blog | PocketSAM",
+    description:
+      "Real experiences from caregivers, families, and patients. Share your story with the PocketSAM community.",
+    url: "https://pocketsam.com/blog",
+  },
 };
 
 const featuredStories: {
@@ -24,6 +33,7 @@ export default function BlogPage() {
       <section className="bg-cream pt-8 pb-10 lg:pt-10 lg:pb-12">
         <Container>
           <SectionHeading
+            as="h1"
             centered
             className="mb-0"
             label="Blog"

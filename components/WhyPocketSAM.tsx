@@ -10,12 +10,13 @@ export default function WhyPocketSAM() {
           <div>
             <SectionLabel>Why PocketSAM?</SectionLabel>
             <h2 className="text-2xl font-bold leading-tight tracking-tight text-teal-deep sm:text-3xl text-balance">
-              Built from real life. Built for real care.
+              A caregiver app built from real life.
             </h2>
             <p className="mt-4 text-sm leading-relaxed text-gray-soft sm:text-base">
-              PocketSAM was inspired by the real challenges families face when coordinating
-              care. SAM stands for Support, Awareness, and Management—bringing everything
-              and everyone together in one simple, intuitive app.
+              PocketSAM helps caregivers and families manage care for a loved one—medications,
+              appointments, symptoms, care tasks, notes, and important health information—in one
+              place. SAM stands for Support, Awareness, and Management, bringing everyone on the
+              care team together.
             </p>
             <div className="mt-6">
               <ButtonSecondary href="/about">Our Story</ButtonSecondary>
@@ -26,7 +27,7 @@ export default function WhyPocketSAM() {
             <div className="relative h-[280px] overflow-hidden rounded-3xl shadow-soft sm:h-[320px] lg:h-[380px]">
               <Image
                 src="/sam-photo.png"
-                alt="A warm portrait of family showing love, strength, and care"
+                alt="Mother and daughter portrait representing family caregiving and care coordination with PocketSAM"
                 fill
                 className="object-cover object-center"
                 sizes="(max-width: 1024px) 100vw, 560px"

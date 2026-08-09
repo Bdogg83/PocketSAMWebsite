@@ -4,9 +4,18 @@ import SectionHeading from "@/components/SectionHeading";
 import PricingCards from "@/components/PricingCards";
 
 export const metadata: Metadata = {
-  title: "Pricing",
+  title: "Caregiver App Pricing",
   description:
-    "Simple, transparent pricing for PocketSAM. $9.99/month after a 30-day free trial, with up to 5 caregivers included.",
+    "Simple PocketSAM pricing: $9.99/month after a 30-day free trial, with up to 5 caregivers included and $1.99/month for each additional caregiver.",
+  alternates: {
+    canonical: "/pricing",
+  },
+  openGraph: {
+    title: "Caregiver App Pricing | PocketSAM",
+    description:
+      "$9.99/month after a 30-day free trial. Up to 5 caregivers included.",
+    url: "https://pocketsam.com/pricing",
+  },
 };
 
 const faqs = [
@@ -42,11 +51,12 @@ export default function PricingPage() {
       <section className="bg-cream pt-8 pb-10 lg:pt-10 lg:pb-12">
         <Container>
           <SectionHeading
+            as="h1"
             centered
             className="mb-0"
             label="Pricing"
             title="Simple, transparent pricing."
-            subtitle="One plan with every feature. Up to 5 caregivers included."
+            subtitle="One caregiver app plan with every feature. Up to 5 caregivers included."
           />
         </Container>
       </section>

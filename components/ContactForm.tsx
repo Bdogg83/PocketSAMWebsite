@@ -173,6 +173,7 @@ export function ContactPageContent() {
     <section className="py-16 lg:py-24">
       <Container>
         <SectionHeading
+          as="h1"
           centered
           title="Get in touch"
           subtitle="PocketSAM is in beta and coming soon. Join the waitlist or ask a question — we'd love to hear from you."

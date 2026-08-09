@@ -18,9 +18,18 @@ import type { LucideIcon } from "lucide-react";
 import AppDownload from "@/components/AppDownload";
 
 export const metadata: Metadata = {
-  title: "Features",
+  title: "Caregiver App Features",
   description:
-    "Explore PocketSAM features including medication tracking, appointments, check-ins, hydration, food intake, reports, care team sharing, and more.",
+    "Explore PocketSAM caregiver app features: medication tracking, appointment tracking, symptom check-ins, care tasks, reports, care team sharing, and more.",
+  alternates: {
+    canonical: "/features",
+  },
+  openGraph: {
+    title: "Caregiver App Features | PocketSAM",
+    description:
+      "Explore PocketSAM caregiver app features: medication tracking, appointment tracking, symptom check-ins, care tasks, reports, and care team sharing.",
+    url: "https://pocketsam.com/features",
+  },
 };
 
 const featureSections: {
@@ -117,10 +126,11 @@ export default function FeaturesPage() {
       <section className="bg-cream pt-8 pb-10 lg:pt-10 lg:pb-12">
         <Container>
           <SectionHeading
+            as="h1"
             centered
             label="Features"
             title="Everything your care team needs, in one place."
-            subtitle="PocketSAM brings together the tools families use every day to stay organized, connected, and confident."
+            subtitle="PocketSAM is a care management app that brings together the tools caregivers and families use every day to stay organized, connected, and confident."
           />
         </Container>
       </section>

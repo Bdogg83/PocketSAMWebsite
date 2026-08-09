@@ -145,13 +145,13 @@ export default function CareTasksDetail() {
               Care Tasks
             </p>
             <h1 className="text-2xl font-bold leading-tight tracking-tight text-teal-deep sm:text-3xl lg:text-4xl text-balance">
-              Coordinate daily care without the{" "}
+              Caregiver task management without the{" "}
               <GreenAccent>confusion.</GreenAccent>
             </h1>
             <p className="mt-4 text-sm leading-relaxed text-gray-soft sm:text-base">
               PocketSAM helps families and caregivers assign, track, and complete everyday care
               tasks so everyone knows what needs to be done, who is helping, and what has already
-              been completed.
+              been completed when you are organizing care for a loved one.
             </p>
           </div>
 

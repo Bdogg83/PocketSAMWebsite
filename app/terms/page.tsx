@@ -5,6 +5,9 @@ import { Container } from "@/components/ui";
 export const metadata: Metadata = {
   title: "Terms of Service",
   description: "PocketSAM terms of service — please read before using our app and website.",
+  alternates: {
+    canonical: "/terms",
+  },
 };
 
 const sections = [

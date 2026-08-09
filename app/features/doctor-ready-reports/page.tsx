@@ -3,9 +3,18 @@ import DoctorReadyReportsDetail from "@/components/DoctorReadyReportsDetail";
 import AppDownload from "@/components/AppDownload";
 
 export const metadata: Metadata = {
-  title: "Doctor-Ready Reports",
+  title: "Doctor-Ready Care Reports",
   description:
-    "Organize check-ins, symptoms, pain notes, vitals, mood, and wellness activity into clear reports so patients and caregivers can walk into appointments better prepared.",
+    "Turn caregiver notes, symptom tracking, vitals, mood, and wellness activity into clear reports so patients and caregivers walk into appointments better prepared.",
+  alternates: {
+    canonical: "/features/doctor-ready-reports",
+  },
+  openGraph: {
+    title: "Doctor-Ready Care Reports | PocketSAM",
+    description:
+      "Organize health journal details into clear reports for doctor visits and care team review.",
+    url: "https://pocketsam.com/features/doctor-ready-reports",
+  },
 };
 
 export default function DoctorReadyReportsPage() {

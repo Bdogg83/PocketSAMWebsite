@@ -72,8 +72,9 @@ export default function MedicationTrackingDetail() {
               <GreenAccent>caregivers.</GreenAccent>
             </h1>
             <p className="mt-4 text-sm leading-relaxed text-gray-soft sm:text-base">
-              PocketSAM helps you organize medications, set reminders, track daily doses,
-              monitor refills, and keep trusted caregivers informed when support is needed.
+              PocketSAM is a medication management app that helps you organize medications,
+              set reminders, track daily doses, monitor refills, and keep trusted caregivers
+              informed when you are managing medications for a loved one.
             </p>
           </div>
         </Container>

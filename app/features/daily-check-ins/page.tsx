@@ -3,9 +3,18 @@ import DailyCheckInsDetail from "@/components/DailyCheckInsDetail";
 import AppDownload from "@/components/AppDownload";
 
 export const metadata: Metadata = {
-  title: "Daily Check-Ins",
+  title: "Symptom Tracking & Care Journal",
   description:
-    "Record mood, symptoms, pain, vitals, notes, and photos with PocketSAM so changes are easier to remember, review, and share with trusted caregivers or doctors.",
+    "Use PocketSAM as a caregiver symptom tracker and care journal—record mood, symptoms, pain, vitals, notes, and photos to share with trusted caregivers or doctors.",
+  alternates: {
+    canonical: "/features/daily-check-ins",
+  },
+  openGraph: {
+    title: "Symptom Tracking & Care Journal | PocketSAM",
+    description:
+      "Track symptoms, mood, pain, vitals, and caregiver notes in a simple health journal between doctor visits.",
+    url: "https://pocketsam.com/features/daily-check-ins",
+  },
 };
 
 export default function DailyCheckInsPage() {

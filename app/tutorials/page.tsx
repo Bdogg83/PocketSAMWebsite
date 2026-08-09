@@ -16,9 +16,18 @@ import {
 import type { LucideIcon } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Tutorials",
+  title: "Caregiver App Tutorials",
   description:
-    "Step-by-step PocketSAM tutorials to help you get started and make the most of every feature.",
+    "Step-by-step PocketSAM tutorials covering medication tracking, appointments, symptom check-ins, care tasks, and more.",
+  alternates: {
+    canonical: "/tutorials",
+  },
+  openGraph: {
+    title: "Caregiver App Tutorials | PocketSAM",
+    description:
+      "Learn how to use PocketSAM for medications, appointments, care tasks, and family care coordination.",
+    url: "https://pocketsam.com/tutorials",
+  },
 };
 
 const tutorials: {
@@ -73,7 +82,7 @@ const tutorials: {
     color: "text-teal-light bg-teal-light/10",
     title: "Hydration Tracking",
     description:
-      "Track daily hydration with simple logging and helpful reminders.",
+      "Track daily hydration with simple logging and clear progress toward your goal.",
     slug: "hydration-tracking",
   },
   {
@@ -116,11 +125,12 @@ export default function TutorialsPage() {
       <section className="bg-cream pt-8 pb-10 lg:pt-10 lg:pb-12">
         <Container>
           <SectionHeading
+            as="h1"
             centered
             className="mb-0"
             label="Tutorials"
             title="Learn how to use PocketSAM."
-            subtitle="Step-by-step guides for every part of the app. Mini tutorials are on the way."
+            subtitle="Step-by-step guides for every part of the caregiver app. Mini tutorials are on the way."
           />
         </Container>
       </section>

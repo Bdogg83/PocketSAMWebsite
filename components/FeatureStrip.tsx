@@ -7,25 +7,25 @@ const features: { icon: LucideIcon; color: string; title: string; text: string }
     icon: CalendarDays,
     color: "text-teal-primary bg-teal-primary/10",
     title: "Stay Organized",
-    text: "Keep all medications, appointments, and tasks in one place.",
+    text: "Keep medications, appointments, and care tasks in one caregiver app.",
   },
   {
     icon: Pill,
     color: "text-green-accent bg-green-accent/10",
     title: "Manage Medications",
-    text: "Stay on top of doses with reminders and tracking.",
+    text: "Track doses and reminders when managing medications for a loved one.",
   },
   {
     icon: Heart,
     color: "text-orange-400 bg-orange-400/10",
-    title: "Track How You Feel",
-    text: "Log symptoms and see trends over time.",
+    title: "Track Symptoms",
+    text: "Log symptoms, mood, and notes in a simple care journal.",
   },
   {
     icon: Share2,
     color: "text-purple-500 bg-purple-500/10",
-    title: "Share & Stay Connected",
-    text: "Keep your care team in the loop, anytime.",
+    title: "Coordinate Care",
+    text: "Share updates so family caregivers and the care team stay connected.",
   },
 ];
 

@@ -76,6 +76,7 @@ export default function PowerfulFeatures() {
                 Powerful features. <GreenAccent>Peace of mind.</GreenAccent>
               </>
             }
+            subtitle="Tools for medication tracking, symptom check-ins, care tasks, reports, and family care coordination."
           />
 
           <div className="grid gap-4 sm:grid-cols-2 sm:gap-6 lg:grid-cols-3 xl:grid-cols-6 xl:gap-8">

@@ -134,13 +134,13 @@ export default function CareCircleSharingDetail() {
               Care Circle Sharing
             </p>
             <h1 className="text-2xl font-bold leading-tight tracking-tight text-teal-deep sm:text-3xl lg:text-4xl text-balance">
-              Share care without giving up{" "}
+              Family care coordination without giving up{" "}
               <GreenAccent>control.</GreenAccent>
             </h1>
             <p className="mt-4 text-sm leading-relaxed text-gray-soft sm:text-base">
-              PocketSAM lets you invite trusted family, friends, caregivers, or care team
-              members into your Care Circle and choose exactly what each person can see or help
-              manage.
+              PocketSAM supports caregiver communication and care team management by letting you
+              invite trusted family, friends, or caregivers into your Care Circle and choose
+              exactly what each person can see or help manage.
             </p>
           </div>
 

@@ -127,13 +127,13 @@ export default function DailyCheckInsDetail() {
               id="daily-check-ins-heading"
               className="text-2xl font-bold leading-tight tracking-tight text-teal-deep sm:text-3xl lg:text-4xl text-balance"
             >
-              Know how each day is really{" "}
-              <GreenAccent>going.</GreenAccent>
+              Symptom tracking and a care journal for every{" "}
+              <GreenAccent>day.</GreenAccent>
             </h1>
             <p className="mt-4 text-sm leading-relaxed text-gray-soft sm:text-base">
-              PocketSAM helps SAM Users record mood, symptoms, pain, vitals, notes, and photos
-              so changes are easier to remember, review, and share with trusted caregivers or
-              doctors.
+              PocketSAM helps care users and caregivers record mood, symptoms, pain, vitals,
+              notes, and photos in a simple health journal so changes are easier to remember,
+              review, and share with trusted caregivers or doctors.
             </p>
           </div>
 

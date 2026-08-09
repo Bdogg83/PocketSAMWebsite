@@ -3,9 +3,18 @@ import AppointmentsDetail from "@/components/AppointmentsDetail";
 import AppDownload from "@/components/AppDownload";
 
 export const metadata: Metadata = {
-  title: "Appointments",
+  title: "Appointment Tracking & Shared Caregiver Calendar",
   description:
-    "Organize appointments in a shared calendar with provider details, locations, notes, customizable reminders, and reusable visit templates with PocketSAM.",
+    "Organize medical appointments with PocketSAM’s shared caregiver calendar—provider details, locations, notes, custom reminders, and reusable visit templates.",
+  alternates: {
+    canonical: "/features/appointments",
+  },
+  openGraph: {
+    title: "Appointment Tracking & Shared Caregiver Calendar | PocketSAM",
+    description:
+      "A medical appointment organizer with shared caregiver calendar views, reminders, and visit templates.",
+    url: "https://pocketsam.com/features/appointments",
+  },
 };
 
 export default function AppointmentsPage() {
