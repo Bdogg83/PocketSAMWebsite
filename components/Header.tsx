@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Menu, X } from "lucide-react";
@@ -18,6 +18,12 @@ const navLinks = [
 export default function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const pathname = usePathname();
+
+  const closeMobileMenu = () => setMobileOpen(false);
+
+  useEffect(() => {
+    setMobileOpen(false);
+  }, [pathname]);
 
   const isActive = (href: string) => {
     if (href === "/") return pathname === "/";
@@ -89,7 +95,7 @@ export default function Header() {
               <Link
                 key={link.href}
                 href={link.href}
-                onClick={() => setMobileOpen(false)}
+                onClick={closeMobileMenu}
                 className={`rounded-xl px-4 py-3 text-base font-medium transition-colors ${
                   isActive(link.href)
                     ? "bg-cream text-teal-deep"
@@ -103,7 +109,7 @@ export default function Header() {
               <p className="text-center text-xs font-semibold uppercase tracking-wide text-green-accent">
                 Beta testing in progress
               </p>
-              <ButtonPrimary href="/contact" className="w-full">
+              <ButtonPrimary href="/contact" className="w-full" onClick={closeMobileMenu}>
                 Coming Soon
               </ButtonPrimary>
             </div>
