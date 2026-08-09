@@ -44,6 +44,7 @@ const featureSections: {
     title: "Appointments",
     description:
       "Organize upcoming appointments, add notes, and keep everyone informed about what's coming next.",
+    href: "/features/appointments",
   },
   {
     icon: Heart,
@@ -58,7 +59,8 @@ const featureSections: {
     color: "text-teal-light bg-teal-light/10",
     title: "Hydration",
     description:
-      "Track daily hydration with simple logging. Helpful reminders keep healthy habits on track.",
+      "Set a daily hydration goal, log fluids quickly, and track intake and progress throughout the day.",
+    href: "/features/hydration",
   },
   {
     icon: UtensilsCrossed,
@@ -97,6 +99,7 @@ const featureSections: {
     title: "Multi-Language Support",
     description:
       "Built for global families with support for multiple languages so care feels personal and accessible.",
+    href: "/features/multi-language-support",
   },
   {
     icon: Shield,
@@ -104,6 +107,7 @@ const featureSections: {
     title: "Privacy-Minded Design",
     description:
       "Your family's information deserves respect. PocketSAM is designed with privacy and security in mind.",
+    href: "/features/privacy-minded-design",
   },
 ];
 
