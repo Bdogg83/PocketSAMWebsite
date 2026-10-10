@@ -1,6 +1,7 @@
 import { Resend } from "resend";
 import {
   classifyProviderError,
+  WaitlistProviderError,
   type WaitlistDirectory,
   type WaitlistEntry,
 } from "./waitlistSignup";
@@ -17,7 +18,7 @@ export function createResendWaitlistDirectory(
       const result = await resend.contacts.get({ email });
       if (result.error) {
         if (classifyProviderError(result.error) === "missing") return null;
-        throw new Error("waitlist lookup failed");
+        throw new WaitlistProviderError("lookup", result.error);
       }
       if (!result.data?.id) return null;
       return { id: result.data.id };
@@ -29,15 +30,10 @@ export function createResendWaitlistDirectory(
         firstName: entry.firstName || undefined,
         unsubscribed: false,
         segments: segment ? [{ id: segment }] : undefined,
-        properties: {
-          source: "pocketsam-website-waitlist",
-          marketingConsent: "yes",
-          recordedAt: entry.recordedAt,
-        },
       });
       if (result.error) {
         if (classifyProviderError(result.error) === "duplicate") return "duplicate";
-        throw new Error("waitlist create failed");
+        throw new WaitlistProviderError("create", result.error);
       }
       return "created";
     },
@@ -46,7 +42,7 @@ export function createResendWaitlistDirectory(
       const result = await resend.contacts.remove({ email });
       if (result.error) {
         if (classifyProviderError(result.error) === "missing") return "missing";
-        throw new Error("waitlist remove failed");
+        throw new WaitlistProviderError("remove", result.error);
       }
       return "removed";
     },

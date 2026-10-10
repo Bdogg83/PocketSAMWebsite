@@ -101,7 +101,16 @@ export async function POST(request: Request) {
 
   const result = await registerWaitlistSignup(entry, directory, notifyOwner);
   if (!result.ok) {
-    return NextResponse.json({ error: result.error }, { status: result.status });
+    return NextResponse.json(
+      {
+        error: result.error,
+        stage: result.stage,
+        providerStatus: result.providerStatus,
+        providerName: result.providerName,
+        providerMessage: result.providerMessage,
+      },
+      { status: result.status },
+    );
   }
 
   return NextResponse.json({
