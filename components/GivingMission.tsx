@@ -15,8 +15,8 @@ export default function GivingMission() {
               We grow. <GreenAccent>We give.</GreenAccent>
             </h2>
             <p className="mt-3 text-sm leading-relaxed text-gray-soft sm:text-base">
-              A portion of every PocketSAM purchase supports care-focused initiatives and
-              organizations that help patients, caregivers, and families.
+              Giving back is part of our mission. As PocketSAM grows, we aim to support
+              cancer research.
             </p>
             <p className="mt-2 text-sm font-semibold text-green-accent">
               Better care for more people. Together.

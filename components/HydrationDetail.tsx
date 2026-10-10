@@ -10,6 +10,7 @@ import {
   Users,
 } from "lucide-react";
 import { Container, ButtonSecondary, GreenAccent } from "./ui";
+import PlanAvailabilityNote from "./PlanAvailabilityNote";
 import type { LucideIcon } from "lucide-react";
 
 const detailCards: { icon: LucideIcon; color: string; title: string; text: string }[] = [
@@ -83,6 +84,7 @@ export default function HydrationDetail() {
               ounces, and daily progress at a glance. Optional caregiver access helps the care team
               stay informed.
             </p>
+            <PlanAvailabilityNote />
           </div>
         </Container>
       </section>

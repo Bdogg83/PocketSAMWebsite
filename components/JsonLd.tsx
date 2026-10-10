@@ -19,7 +19,7 @@ const softwareApplicationJsonLd = {
   operatingSystem: "iOS, Android",
   url: "https://pocketsam.com",
   description:
-    "A caregiver and care management app that helps patients, caregivers, and families organize medications, appointments, symptoms, care tasks, notes, and care team coordination.",
+    "A caregiver and care management app that helps patients, caregivers, and families organize medications, appointments, symptoms, care tasks, notes, and care team coordination. PocketSAM is currently in beta and is not yet available for download.",
   offers: {
     "@type": "AggregateOffer",
     priceCurrency: "USD",

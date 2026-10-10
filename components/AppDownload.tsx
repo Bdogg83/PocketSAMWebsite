@@ -1,4 +1,6 @@
+import Link from "next/link";
 import { Container, PocketSAMLogo } from "./ui";
+import { waitlistPath } from "./sitePaths";
 
 function StoreButton({ store }: { store: "apple" | "google" }) {
   const label = store === "apple" ? "App Store" : "Google Play";
@@ -48,8 +50,15 @@ export default function AppDownload({
               Your pocket caregiver is always with you.
             </h2>
             <p className="mt-2 text-sm leading-relaxed text-gray-soft sm:text-base">
-              PocketSAM is in beta testing now. The app and full website experience are coming
-              soon. Join the waitlist and be first to know when we launch.
+              PocketSAM is in beta testing now. The App Store and Google Play listings are
+              coming soon.{" "}
+              <Link
+                href={waitlistPath}
+                className="rounded-sm font-semibold text-teal-primary underline-offset-2 hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal-deep"
+              >
+                Join the Waitlist
+              </Link>{" "}
+              to hear when the app is ready.
             </p>
           </div>
 

@@ -17,6 +17,7 @@ export default function StoryForm() {
   const [role, setRole] = useState("");
   const [story, setStory] = useState("");
   const [canFeature, setCanFeature] = useState(false);
+  const [companyWebsite, setCompanyWebsite] = useState("");
   const [submitted, setSubmitted] = useState(false);
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState("");
@@ -48,6 +49,7 @@ export default function StoryForm() {
           role,
           story: story.trim(),
           canFeature,
+          companyWebsite,
         }),
       });
 
@@ -88,6 +90,18 @@ export default function StoryForm() {
 
   return (
     <form onSubmit={handleSubmit} className="space-y-5" noValidate>
+      <div className="absolute -left-[9999px] h-0 w-0 overflow-hidden" aria-hidden="true">
+        <label htmlFor="story-company">Company website</label>
+        <input
+          id="story-company"
+          name="companyWebsite"
+          type="text"
+          tabIndex={-1}
+          autoComplete="off"
+          value={companyWebsite}
+          onChange={(e) => setCompanyWebsite(e.target.value)}
+        />
+      </div>
       <div>
         <label htmlFor="story-name" className="mb-1.5 block text-sm font-medium text-teal-deep">
           Name <span className="text-gray-soft">(or first name / nickname)</span>
@@ -177,7 +191,7 @@ export default function StoryForm() {
         </p>
       )}
 
-      <ButtonPrimary type="submit" className="w-full">
+      <ButtonPrimary type="submit" className="w-full" disabled={submitting}>
         {submitting ? "Sending…" : "Submit Your Story"}
       </ButtonPrimary>
     </form>

@@ -1,29 +1,35 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Menu, X } from "lucide-react";
 import { PocketSAMLogo, ButtonPrimary, Container } from "./ui";
+import { waitlistPath } from "./sitePaths";
 
 const navLinks = [
   { href: "/", label: "Home" },
   { href: "/features", label: "Features" },
   { href: "/about", label: "About Us" },
   { href: "/pricing", label: "Pricing" },
-  { href: "/tutorials", label: "Tutorials" },
-  { href: "/blog", label: "Blog" },
 ];
 
+const navLinkClass = (active: boolean) =>
+  `relative rounded-sm text-sm font-medium transition-colors hover:text-teal-deep focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal-deep ${
+    active ? "text-teal-deep" : "text-gray-soft"
+  }`;
+
 export default function Header() {
-  const [mobileOpen, setMobileOpen] = useState(false);
   const pathname = usePathname();
+  const [mobileOpen, setMobileOpen] = useState(false);
+  const [menuPath, setMenuPath] = useState(pathname);
+
+  if (menuPath !== pathname) {
+    setMenuPath(pathname);
+    setMobileOpen(false);
+  }
 
   const closeMobileMenu = () => setMobileOpen(false);
-
-  useEffect(() => {
-    setMobileOpen(false);
-  }, [pathname]);
 
   const isActive = (href: string) => {
     if (href === "/") return pathname === "/";
@@ -37,6 +43,7 @@ export default function Header() {
           <Link
             href="/"
             aria-label="PocketSAM home"
+            onClick={closeMobileMenu}
             className="relative z-10 min-w-0 shrink-0 overflow-hidden"
           >
             <PocketSAMLogo
@@ -53,9 +60,8 @@ export default function Header() {
               <Link
                 key={link.href}
                 href={link.href}
-                className={`relative text-sm font-medium transition-colors hover:text-teal-deep ${
-                  isActive(link.href) ? "text-teal-deep" : "text-gray-soft"
-                }`}
+                aria-current={isActive(link.href) ? "page" : undefined}
+                className={navLinkClass(isActive(link.href))}
               >
                 {link.label}
                 {isActive(link.href) && (
@@ -69,12 +75,12 @@ export default function Header() {
             <span className="rounded-full bg-green-pale px-3 py-1 text-xs font-semibold text-teal-deep">
               Beta
             </span>
-            <ButtonPrimary href="/contact">Coming Soon</ButtonPrimary>
+            <ButtonPrimary href={waitlistPath}>Join the Waitlist</ButtonPrimary>
           </div>
 
           <button
             type="button"
-            className="relative z-10 shrink-0 rounded-xl p-2 text-teal-deep transition-colors hover:bg-cream lg:hidden"
+            className="relative z-10 shrink-0 rounded-xl p-2 text-teal-deep transition-colors hover:bg-cream focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal-deep lg:hidden"
             onClick={() => setMobileOpen(!mobileOpen)}
             aria-expanded={mobileOpen}
             aria-controls="mobile-menu"
@@ -96,7 +102,8 @@ export default function Header() {
                 key={link.href}
                 href={link.href}
                 onClick={closeMobileMenu}
-                className={`rounded-xl px-4 py-3 text-base font-medium transition-colors ${
+                aria-current={isActive(link.href) ? "page" : undefined}
+                className={`rounded-xl px-4 py-3 text-base font-medium transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal-deep ${
                   isActive(link.href)
                     ? "bg-cream text-teal-deep"
                     : "text-gray-soft hover:bg-cream/60 hover:text-teal-deep"
@@ -109,8 +116,8 @@ export default function Header() {
               <p className="text-center text-xs font-semibold uppercase tracking-wide text-green-accent">
                 Beta testing in progress
               </p>
-              <ButtonPrimary href="/contact" className="w-full" onClick={closeMobileMenu}>
-                Coming Soon
+              <ButtonPrimary href={waitlistPath} className="w-full" onClick={closeMobileMenu}>
+                Join the Waitlist
               </ButtonPrimary>
             </div>
           </nav>

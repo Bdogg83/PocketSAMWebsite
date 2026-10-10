@@ -16,6 +16,7 @@ import {
   FileText,
 } from "lucide-react";
 import { Container, ButtonSecondary, GreenAccent } from "./ui";
+import PlanAvailabilityNote from "./PlanAvailabilityNote";
 import type { LucideIcon } from "lucide-react";
 
 const steps: { icon: LucideIcon; color: string; title: string; text: string }[] = [
@@ -135,6 +136,7 @@ export default function DailyCheckInsDetail() {
               notes, and photos in a simple health journal so changes are easier to remember,
               review, and share with trusted caregivers or doctors.
             </p>
+            <PlanAvailabilityNote />
           </div>
 
           <div className="mt-10 lg:mt-12">

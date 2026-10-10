@@ -11,6 +11,7 @@ import {
   Server,
 } from "lucide-react";
 import { Container, ButtonSecondary, GreenAccent } from "./ui";
+import PlanAvailabilityNote from "./PlanAvailabilityNote";
 import type { LucideIcon } from "lucide-react";
 
 const detailCards: { icon: LucideIcon; color: string; title: string; text: string }[] = [
@@ -90,6 +91,7 @@ export default function PrivacyMindedDesignDetail() {
               PocketSAM also includes secure permission storage, account-level data separation, and
               controls for analytics, history, and emergency sharing.
             </p>
+            <PlanAvailabilityNote />
           </div>
         </Container>
       </section>

@@ -7,14 +7,18 @@ import StoryForm from "@/components/StoryForm";
 export const metadata: Metadata = {
   title: "Caregiving Stories & Blog",
   description:
-    "Read stories from the PocketSAM community and share your own experience with caregiving, family care coordination, and caring for a loved one.",
+    "Share a caregiving story with PocketSAM. Stories are published only with permission, and none are published yet.",
   alternates: {
     canonical: "/blog",
+  },
+  robots: {
+    index: false,
+    follow: false,
   },
   openGraph: {
     title: "Caregiving Stories & Blog | PocketSAM",
     description:
-      "Real experiences from caregivers, families, and patients. Share your story with the PocketSAM community.",
+      "Share a caregiving experience with PocketSAM. Nothing is published without permission.",
     url: "https://pocketsam.com/blog",
   },
 };
@@ -37,8 +41,8 @@ export default function BlogPage() {
             centered
             className="mb-0"
             label="Blog"
-            title="Stories from the PocketSAM community."
-            subtitle="Real experiences from caregivers, families, and patients. Yours could be next."
+            title="Stories will live here when someone asks us to share one."
+            subtitle="There are no published stories yet. If you want to tell us about caregiving, you can send a note below. We will not publish it unless you say we may."
           />
         </Container>
       </section>

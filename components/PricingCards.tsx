@@ -1,6 +1,8 @@
 import { Check } from "lucide-react";
+import Link from "next/link";
 import { ButtonPrimary, Container } from "./ui";
 import { pricingPlans } from "./pricingData";
+import { waitlistPath } from "./sitePaths";
 
 export default function PricingCards() {
   return (
@@ -44,9 +46,20 @@ export default function PricingCards() {
                 ))}
               </ul>
 
+              {plan.key === "assistant" && (
+                <p className="mt-4 text-sm">
+                  <Link
+                    href="/features/assistant"
+                    className="rounded-sm font-semibold text-teal-primary underline-offset-2 hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal-deep"
+                  >
+                    How Assistant works
+                  </Link>
+                </p>
+              )}
+
               <div className="mt-auto pt-6">
                 <p className="text-sm leading-relaxed text-gray-soft">{plan.supporting}</p>
-                <ButtonPrimary href="/contact" className="relative mt-5 w-full">
+                <ButtonPrimary href={waitlistPath} className="relative mt-5 w-full">
                   Join the Waitlist
                   <span className="sr-only"> for {plan.name}</span>
                 </ButtonPrimary>

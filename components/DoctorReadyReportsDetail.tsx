@@ -92,7 +92,7 @@ const featureCards: { icon: LucideIcon; color: string; title: string; text: stri
     icon: Pill,
     color: "text-green-accent bg-green-accent/10",
     title: "Medication Context",
-    text: "Help connect daily symptoms and notes with the larger care routine, including medication activity.",
+    text: "Use the visit report next to the medication list already saved in PocketSAM. The report itself summarizes saved check-ins, and hydration or food entries when you include them. It does not list medications.",
   },
   {
     icon: Droplets,

@@ -18,14 +18,18 @@ import type { LucideIcon } from "lucide-react";
 export const metadata: Metadata = {
   title: "Caregiver App Tutorials",
   description:
-    "Step-by-step PocketSAM tutorials covering medication tracking, appointments, symptom check-ins, care tasks, and more.",
+    "PocketSAM tutorials are not published yet. Feature guides will be added when they match the app.",
   alternates: {
     canonical: "/tutorials",
+  },
+  robots: {
+    index: false,
+    follow: false,
   },
   openGraph: {
     title: "Caregiver App Tutorials | PocketSAM",
     description:
-      "Learn how to use PocketSAM for medications, appointments, care tasks, and family care coordination.",
+      "Learn how to use PocketSAM for medications, appointments, care tasks, and family care coordination. Tutorials are not published yet.",
     url: "https://pocketsam.com/tutorials",
   },
 };
@@ -130,7 +134,7 @@ export default function TutorialsPage() {
             className="mb-0"
             label="Tutorials"
             title="Learn how to use PocketSAM."
-            subtitle="Step-by-step guides for every part of the caregiver app. Mini tutorials are on the way."
+            subtitle="These topics are saved for later. The guides are not ready, so the cards below do not open."
           />
         </Container>
       </section>
@@ -142,10 +146,10 @@ export default function TutorialsPage() {
               <article
                 key={slug}
                 id={slug}
-                className="group rounded-3xl border border-gray-border bg-white p-6 shadow-soft transition-all hover:-translate-y-0.5 hover:shadow-soft-lg"
+                className="rounded-3xl border border-gray-border bg-white p-6 shadow-soft"
               >
                 <div
-                  className={`mb-4 flex h-12 w-12 items-center justify-center rounded-2xl transition-transform group-hover:scale-105 ${color.split(" ")[1]}`}
+                  className={`mb-4 flex h-12 w-12 items-center justify-center rounded-2xl ${color.split(" ")[1]}`}
                 >
                   <Icon className={`h-6 w-6 ${color.split(" ")[0]}`} aria-hidden="true" />
                 </div>

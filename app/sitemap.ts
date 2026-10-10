@@ -18,6 +18,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { path: "/features/care-tasks", changeFrequency: "monthly", priority: 0.8 },
     { path: "/features/hydration", changeFrequency: "monthly", priority: 0.7 },
     { path: "/features/doctor-ready-reports", changeFrequency: "monthly", priority: 0.8 },
+    { path: "/features/assistant", changeFrequency: "monthly", priority: 0.8 },
+    { path: "/features/food-intake", changeFrequency: "monthly", priority: 0.7 },
     { path: "/features/care-circle-sharing", changeFrequency: "monthly", priority: 0.8 },
     { path: "/features/emergency-info", changeFrequency: "monthly", priority: 0.7 },
     { path: "/features/multi-language-support", changeFrequency: "monthly", priority: 0.6 },
@@ -25,8 +27,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { path: "/about", changeFrequency: "monthly", priority: 0.7 },
     { path: "/pricing", changeFrequency: "monthly", priority: 0.8 },
     { path: "/contact", changeFrequency: "monthly", priority: 0.7 },
-    { path: "/tutorials", changeFrequency: "monthly", priority: 0.6 },
-    { path: "/blog", changeFrequency: "weekly", priority: 0.6 },
+    { path: "/waitlist", changeFrequency: "monthly", priority: 0.7 },
     { path: "/privacy", changeFrequency: "yearly", priority: 0.3 },
     { path: "/terms", changeFrequency: "yearly", priority: 0.3 },
   ];

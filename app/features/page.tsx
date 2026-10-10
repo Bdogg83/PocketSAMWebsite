@@ -11,6 +11,7 @@ import {
   FileText,
   Users,
   AlertTriangle,
+  MessageCircle,
   Globe,
   Shield,
 } from "lucide-react";
@@ -77,7 +78,8 @@ const featureSections: {
     color: "text-purple-500 bg-purple-500/10",
     title: "Food Intake",
     description:
-      "Record meals and nutrition notes to give your care team a fuller picture of daily wellness.",
+      "Record meals and snacks and look back at what was logged during the day.",
+    href: "/features/food-intake",
   },
   {
     icon: FileText,
@@ -86,6 +88,14 @@ const featureSections: {
     description:
       "Generate beautiful summary reports you can review, export, and share with doctors or family members.",
     href: "/features/doctor-ready-reports",
+  },
+  {
+    icon: MessageCircle,
+    color: "text-teal-primary bg-teal-primary/10",
+    title: "Assistant",
+    description:
+      "Turn a typed or spoken update into proposed care actions, then review and confirm them before they are saved. Included with PocketSAM Assistant.",
+    href: "/features/assistant",
   },
   {
     icon: Users,

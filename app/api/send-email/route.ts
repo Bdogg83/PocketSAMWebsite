@@ -1,30 +1,21 @@
 import { NextResponse } from "next/server";
 import { Resend } from "resend";
+import { validateSubmission } from "@/lib/siteForms";
+import { rateLimit } from "@/lib/rateLimit";
 
 export const runtime = "nodejs";
+export const dynamic = "force-dynamic";
 
 const CONTACT_EMAIL = "admin@pocketsam.com";
-// pocketsam.com is verified in Resend, so we can send from the domain.
 const FROM_EMAIL = "PocketSAM Website <admin@pocketsam.com>";
+const MAX_BODY_CHARS = 20_000;
+const WINDOW_MS = 10 * 60 * 1000;
+const MAX_REQUESTS = 5;
 
-const PHONE_TYPES = ["Apple / iPhone", "Android"] as const;
-
-type FormPayload = {
-  formType?: string;
-  name?: string;
-  email?: string;
-  phoneType?: string;
-  message?: string;
-  role?: string;
-  story?: string;
-  canFeature?: boolean;
-};
-
-const subjects: Record<string, string> = {
+const subjects = {
   contact: "PocketSAM website — Get in touch",
   story: "PocketSAM website — Story submission",
-  waitlist: "PocketSAM website — Waitlist signup",
-};
+} as const;
 
 const GENERIC_ERROR =
   "Unable to send your message. Please try again or email admin@pocketsam.com.";
@@ -43,11 +34,9 @@ function renderHtml(subject: string, fields: Array<[string, string]>): string {
     .map(
       ([label, value]) =>
         `<tr>
-          <td style="padding:6px 12px;font-weight:bold;vertical-align:top;white-space:nowrap">${escapeHtml(
-            label
-          )}</td>
+          <td style="padding:6px 12px;font-weight:bold;vertical-align:top;white-space:nowrap">${escapeHtml(label)}</td>
           <td style="padding:6px 12px">${escapeHtml(value).replace(/\n/g, "<br />")}</td>
-        </tr>`
+        </tr>`,
     )
     .join("");
 
@@ -57,90 +46,91 @@ function renderHtml(subject: string, fields: Array<[string, string]>): string {
   </div>`;
 }
 
+function clientKey(request: Request): string {
+  const forwarded = request.headers.get("x-forwarded-for");
+  const first = forwarded?.split(",")[0]?.trim();
+  return (first || "unknown").slice(0, 80);
+}
+
+function success() {
+  return NextResponse.json({ success: true });
+}
+
 export async function POST(request: Request) {
+  const raw = await request.text();
+  if (raw.length > MAX_BODY_CHARS) {
+    return NextResponse.json(
+      { error: "Please shorten your message and try again." },
+      { status: 413 },
+    );
+  }
+
+  let body: unknown;
   try {
-    const body = (await request.json()) as FormPayload;
-    const formType = body.formType || "contact";
-    const name = body.name?.trim() || "";
-    const email = body.email?.trim() || "";
+    body = JSON.parse(raw);
+  } catch {
+    return NextResponse.json(
+      { error: "Please check the form and try again." },
+      { status: 400 },
+    );
+  }
 
-    if (!name || !email) {
-      return NextResponse.json(
-        { error: "Name and email are required." },
-        { status: 400 }
-      );
+  const limit = rateLimit(`form:${clientKey(request)}`, MAX_REQUESTS, WINDOW_MS);
+  if (!limit.ok) {
+    return NextResponse.json(
+      { error: "Too many submissions. Please wait a few minutes and try again." },
+      { status: 429, headers: { "Retry-After": String(limit.retryAfterSeconds) } },
+    );
+  }
+
+  if (body && typeof body === "object") {
+    const company = (body as { companyWebsite?: unknown }).companyWebsite;
+    if (typeof company === "string" && company.trim()) {
+      return success();
     }
+  }
 
-    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-      return NextResponse.json(
-        { error: "Please enter a valid email address." },
-        { status: 400 }
-      );
-    }
+  const validated = validateSubmission(body);
+  if (!validated.ok) {
+    return NextResponse.json({ error: validated.error }, { status: validated.status });
+  }
 
-    const fields: Array<[string, string]> = [
-      ["Name", name],
-      ["Email", email],
-    ];
+  if (validated.formType === "waitlist") {
+    return NextResponse.json(
+      { error: "Use the waitlist page to join. This form does not save waitlist signups." },
+      { status: 400 },
+    );
+  }
 
-    if (formType === "contact") {
-      const phoneType = body.phoneType?.trim() || "";
-      const message = body.message?.trim() || "";
-      if (
-        !phoneType ||
-        !PHONE_TYPES.includes(phoneType as (typeof PHONE_TYPES)[number]) ||
-        !message
-      ) {
-        return NextResponse.json(
-          { error: "Please fill in all fields." },
-          { status: 400 }
-        );
-      }
-      fields.push(["Phone Type", phoneType]);
-      fields.push(["Message", message]);
-    } else if (formType === "story") {
-      const role = body.role?.trim() || "";
-      const story = body.story?.trim() || "";
-      if (!role || !story) {
-        return NextResponse.json(
-          { error: "Please fill in all required fields." },
-          { status: 400 }
-        );
-      }
-      fields.push(["Role", role]);
-      fields.push(["Story", story]);
-      fields.push(["Can feature", body.canFeature ? "Yes" : "No"]);
-    } else if (formType === "waitlist") {
-      fields.push(["Message", "Please add me to the PocketSAM waitlist."]);
-    }
+  const apiKey = process.env.RESEND_API_KEY;
+  if (!apiKey) {
+    console.error("RESEND_API_KEY is not set; cannot send email.");
+    return NextResponse.json({ error: GENERIC_ERROR }, { status: 500 });
+  }
 
-    const apiKey = process.env.RESEND_API_KEY;
-    if (!apiKey) {
-      console.error("RESEND_API_KEY is not set; cannot send email.");
-      return NextResponse.json({ error: GENERIC_ERROR }, { status: 500 });
-    }
+  const subject = subjects[validated.formType];
+  const fields: Array<[string, string]> = [...validated.fields];
 
+  try {
     const resend = new Resend(apiKey);
-    const subject = subjects[formType] || subjects.contact;
     const text = fields.map(([label, value]) => `${label}: ${value}`).join("\n");
-
-    const { data, error } = await resend.emails.send({
+    const { error } = await resend.emails.send({
       from: FROM_EMAIL,
       to: [CONTACT_EMAIL],
-      replyTo: email,
+      replyTo: validated.email,
       subject,
       text,
       html: renderHtml(subject, fields),
     });
 
     if (error) {
-      console.error("Resend failed to send email:", error);
+      console.error("Resend failed to send email.");
       return NextResponse.json({ error: GENERIC_ERROR }, { status: 502 });
     }
-
-    return NextResponse.json({ success: true, id: data?.id ?? null });
-  } catch (err) {
-    console.error("send-email route error:", err);
+  } catch {
+    console.error("send-email route error");
     return NextResponse.json({ error: GENERIC_ERROR }, { status: 500 });
   }
+
+  return success();
 }

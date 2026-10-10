@@ -9,6 +9,7 @@ import {
   Stethoscope,
 } from "lucide-react";
 import { Container, ButtonSecondary, GreenAccent } from "./ui";
+import PlanAvailabilityNote from "./PlanAvailabilityNote";
 import type { LucideIcon } from "lucide-react";
 
 const detailCards: { icon: LucideIcon; color: string; title: string; text: string }[] = [
@@ -76,6 +77,7 @@ export default function AppointmentsDetail() {
               customizable reminders. PocketSAM’s shared caregiver calendar and reusable visit
               templates make recurring care easier to schedule.
             </p>
+            <PlanAvailabilityNote />
           </div>
         </Container>
       </section>

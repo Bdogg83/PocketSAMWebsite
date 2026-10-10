@@ -22,6 +22,7 @@ import {
   Sparkles,
 } from "lucide-react";
 import { Container, ButtonSecondary, GreenAccent } from "./ui";
+import PlanAvailabilityNote from "./PlanAvailabilityNote";
 import type { LucideIcon } from "lucide-react";
 
 const steps: { icon: LucideIcon; color: string; title: string; text: string }[] = [
@@ -186,6 +187,7 @@ export default function EmergencyInfoDetail() {
               doctors, insurance details, and important care notes organized in one place for
               caregivers and urgent situations.
             </p>
+            <PlanAvailabilityNote />
           </div>
 
           <div className="mt-10 lg:mt-12">

@@ -9,6 +9,7 @@ import {
   Users,
 } from "lucide-react";
 import { Container, ButtonSecondary, GreenAccent } from "./ui";
+import PlanAvailabilityNote from "./PlanAvailabilityNote";
 import type { LucideIcon } from "lucide-react";
 
 const detailCards: { icon: LucideIcon; color: string; title: string; text: string }[] = [
@@ -76,6 +77,7 @@ export default function MedicationTrackingDetail() {
               set reminders, track daily doses, monitor refills, and keep trusted caregivers
               informed when you are managing medications for a loved one.
             </p>
+            <PlanAvailabilityNote />
           </div>
         </Container>
       </section>

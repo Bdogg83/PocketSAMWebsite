@@ -1,5 +1,6 @@
 import { ButtonPrimary, ButtonSecondary, Container } from "./ui";
 import { launchPricingNotice, pricingSummary } from "./pricingData";
+import { waitlistPath } from "./sitePaths";
 
 export default function PlanSummary() {
   return (
@@ -21,7 +22,7 @@ export default function PlanSummary() {
           <p className="mt-3 text-sm font-semibold text-teal-deep">{launchPricingNotice}</p>
           <div className="mt-6 flex flex-col items-center justify-center gap-3 sm:flex-row">
             <ButtonPrimary href="/pricing">View plans</ButtonPrimary>
-            <ButtonSecondary href="/contact">Join the Waitlist</ButtonSecondary>
+            <ButtonSecondary href={waitlistPath}>Join the Waitlist</ButtonSecondary>
           </div>
         </div>
       </Container>

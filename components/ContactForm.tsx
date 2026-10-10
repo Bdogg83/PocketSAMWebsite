@@ -1,8 +1,10 @@
 "use client";
 
 import { useState, FormEvent } from "react";
+import Link from "next/link";
 import { Container, ButtonPrimary } from "./ui";
 import SectionHeading from "./SectionHeading";
+import { waitlistPath } from "./sitePaths";
 
 const PHONE_TYPES = ["Apple / iPhone", "Android"] as const;
 type PhoneType = (typeof PHONE_TYPES)[number];
@@ -12,6 +14,7 @@ export default function ContactForm() {
   const [email, setEmail] = useState("");
   const [phoneType, setPhoneType] = useState<PhoneType | "">("");
   const [message, setMessage] = useState("");
+  const [companyWebsite, setCompanyWebsite] = useState("");
   const [submitted, setSubmitted] = useState(false);
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState("");
@@ -42,6 +45,7 @@ export default function ContactForm() {
           email: email.trim(),
           phoneType,
           message: message.trim(),
+          companyWebsite,
         }),
       });
 
@@ -79,6 +83,22 @@ export default function ContactForm() {
         </div>
       ) : (
         <form onSubmit={handleSubmit} className="space-y-5" noValidate>
+          <p className="rounded-2xl bg-cream px-4 py-3 text-sm leading-relaxed text-teal-deep">
+            Please do not send a medical emergency or sensitive health records through this
+            form. If someone needs emergency help, contact local emergency services.
+          </p>
+          <div className="absolute -left-[9999px] h-0 w-0 overflow-hidden" aria-hidden="true">
+            <label htmlFor="contact-company">Company website</label>
+            <input
+              id="contact-company"
+              name="companyWebsite"
+              type="text"
+              tabIndex={-1}
+              autoComplete="off"
+              value={companyWebsite}
+              onChange={(e) => setCompanyWebsite(e.target.value)}
+            />
+          </div>
           <div>
             <label htmlFor="contact-name" className="mb-1.5 block text-sm font-medium text-teal-deep">
               Name
@@ -159,7 +179,7 @@ export default function ContactForm() {
             </p>
           )}
 
-          <ButtonPrimary type="submit" className="w-full">
+          <ButtonPrimary type="submit" className="w-full" disabled={submitting}>
             {submitting ? "Sending…" : "Send Message"}
           </ButtonPrimary>
         </form>
@@ -176,8 +196,16 @@ export function ContactPageContent() {
           as="h1"
           centered
           title="Get in touch"
-          subtitle="PocketSAM is in beta and coming soon. Join the waitlist or ask a question — we'd love to hear from you."
+          subtitle="Send a question about PocketSAM. To hear when the app launches, join the waitlist."
         />
+        <p className="mx-auto mb-8 max-w-xl text-center text-sm text-gray-soft">
+          <Link
+            href={waitlistPath}
+            className="rounded-sm font-semibold text-teal-primary underline-offset-2 hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal-deep"
+          >
+            Join the Waitlist
+          </Link>
+        </p>
         <ContactForm />
       </Container>
     </section>

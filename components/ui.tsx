@@ -42,14 +42,16 @@ export function ButtonPrimary({
   className = "",
   type = "button",
   onClick,
+  disabled = false,
 }: {
   children: React.ReactNode;
   href?: string;
   className?: string;
   type?: "button" | "submit";
   onClick?: () => void;
+  disabled?: boolean;
 }) {
-  const classes = `inline-flex items-center justify-center rounded-2xl bg-teal-deep px-6 py-3 text-sm font-semibold text-white shadow-soft transition-all hover:bg-teal-primary hover:shadow-soft-lg focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal-deep ${className}`;
+  const classes = `inline-flex items-center justify-center rounded-2xl bg-teal-deep px-6 py-3 text-sm font-semibold text-white shadow-soft transition-all hover:bg-teal-primary hover:shadow-soft-lg focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal-deep disabled:cursor-not-allowed disabled:opacity-60 ${className}`;
 
   if (href) {
     return (
@@ -60,7 +62,7 @@ export function ButtonPrimary({
   }
 
   return (
-    <button type={type} onClick={onClick} className={classes}>
+    <button type={type} onClick={onClick} className={classes} disabled={disabled}>
       {children}
     </button>
   );

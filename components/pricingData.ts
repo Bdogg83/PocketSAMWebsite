@@ -79,7 +79,7 @@ export const pricingPlans: PricingPlan[] = [
     period: "/month",
     schemaPrice: "9.99",
     schemaDescription:
-      "Monthly plan at $9.99 USD for one care user and up to five additional caregivers. Includes personal care tools, caregiver collaboration, and shared care tasks. AI features are not included. One subscription covers the care circle. Paid plans renew automatically. Planned launch pricing. PocketSAM is currently in beta.",
+      "Monthly plan at $9.99 USD for one care user and up to five additional caregivers. Includes personal care tools, caregiver collaboration, and shared care tasks. AI features are not included. One subscription covers the care circle. At launch, paid plans are planned to renew through the App Store or Google Play. PocketSAM is currently in beta.",
     tagline: "Keep everyone on the same page.",
     description: "Coordinate one person's care with the people who help.",
     caregiverLimit: "Up to 5 additional caregivers",
@@ -101,7 +101,7 @@ export const pricingPlans: PricingPlan[] = [
     period: "/month",
     schemaPrice: "14.99",
     schemaDescription:
-      "Monthly plan at $14.99 USD for one care user. Inviting caregivers is optional, and additional caregivers are unlimited. Includes AI assistance that prepares proposed care actions for review. Unlimited applies to caregiver accounts only. AI usage is subject to care-circle-level usage and rate controls. Paid plans renew automatically. Planned launch pricing. PocketSAM is currently in beta.",
+      "Monthly plan at $14.99 USD for one care user. Inviting caregivers is optional, and additional caregivers are unlimited. Includes AI assistance that prepares proposed care actions for review. Unlimited applies to caregiver accounts only. AI usage is subject to care-circle-level usage and rate controls. At launch, paid plans are planned to renew through the App Store or Google Play. PocketSAM is currently in beta.",
     tagline: "Less manual entry. More time for care.",
     description:
       "Use typed or spoken updates to prepare care entries, then review and confirm them before they are saved.",
@@ -237,12 +237,12 @@ export const pricingFaqs: { question: string; answer: string }[] = [
   {
     question: "Can I change plans?",
     answer:
-      "The app will support upgrades and downgrades. When a change takes effect depends on the applicable App Store or Google Play subscription rules.",
+      "Paid plans are planned for the App Store and Google Play. This website does not collect payment. Saved care records stay with the care user. Assistant is the only plan that includes AI. Together includes up to five additional caregivers, and Personal does not include additional caregiver accounts.",
   },
   {
     question: "What happens if I downgrade?",
     answer:
-      "The care user keeps their saved care records. Moving from Assistant to Together removes AI access and limits the circle to five additional caregivers. Returning to Personal removes additional caregiver access when the paid entitlement ends. Excess memberships are suspended rather than deleted.",
+      "Saved care records stay with the care user. A lower plan includes only that plan's caregiver access and AI access. New caregiver invitations follow the active plan, and pending invitations count toward a limited plan. PocketSAM is in beta, and the app does not yet finish the experience for a care circle that is already larger than the plan it moves to.",
   },
   {
     question: "Is PocketSAM a medical device?",
