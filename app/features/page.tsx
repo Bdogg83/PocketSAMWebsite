@@ -16,6 +16,7 @@ import {
 } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 import AppDownload from "@/components/AppDownload";
+import { launchPricingNotice, pricingSummary } from "@/components/pricingData";
 
 export const metadata: Metadata = {
   title: "Caregiver App Features",
@@ -132,6 +133,18 @@ export default function FeaturesPage() {
             title="Everything your care team needs, in one place."
             subtitle="PocketSAM is a care management app that brings together the tools caregivers and families use every day to stay organized, connected, and confident."
           />
+          <p className="mx-auto max-w-3xl text-center text-sm leading-relaxed text-gray-soft sm:text-base">
+            {pricingSummary}{" "}
+            <Link
+              href="/pricing"
+              className="rounded-sm font-semibold text-teal-primary underline-offset-2 hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal-deep"
+            >
+              View plans
+            </Link>
+          </p>
+          <p className="mt-3 text-center text-sm font-semibold text-teal-deep">
+            {launchPricingNotice}
+          </p>
         </Container>
       </section>
 

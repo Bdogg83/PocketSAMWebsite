@@ -1,3 +1,5 @@
+import { pricingPlans } from "./pricingData";
+
 const organizationJsonLd = {
   "@context": "https://schema.org",
   "@type": "Organization",
@@ -19,10 +21,19 @@ const softwareApplicationJsonLd = {
   description:
     "A caregiver and care management app that helps patients, caregivers, and families organize medications, appointments, symptoms, care tasks, notes, and care team coordination.",
   offers: {
-    "@type": "Offer",
-    price: "9.99",
+    "@type": "AggregateOffer",
     priceCurrency: "USD",
-    description: "Monthly subscription after a 30-day free trial. Includes up to 5 caregivers.",
+    lowPrice: "0",
+    highPrice: "14.99",
+    offerCount: pricingPlans.length,
+    offers: pricingPlans.map((plan) => ({
+      "@type": "Offer",
+      name: plan.name,
+      price: plan.schemaPrice,
+      priceCurrency: "USD",
+      url: "https://pocketsam.com/pricing",
+      description: plan.schemaDescription,
+    })),
   },
 };
 

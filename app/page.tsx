@@ -4,6 +4,7 @@ import FeatureStrip from "@/components/FeatureStrip";
 import WhyPocketSAM from "@/components/WhyPocketSAM";
 import PowerfulFeatures from "@/components/PowerfulFeatures";
 import GivingMission from "@/components/GivingMission";
+import PlanSummary from "@/components/PlanSummary";
 import AppDownload from "@/components/AppDownload";
 
 export const metadata: Metadata = {
@@ -31,6 +32,7 @@ export default function HomePage() {
       <div className="relative z-10 bg-white">
         <WhyPocketSAM />
         <PowerfulFeatures />
+        <PlanSummary />
         <GivingMission />
         <AppDownload className="pb-8 pt-2 lg:pb-10 lg:pt-3" />
       </div>

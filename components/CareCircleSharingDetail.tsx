@@ -18,6 +18,7 @@ import {
   Lock,
 } from "lucide-react";
 import { Container, ButtonSecondary, GreenAccent } from "./ui";
+import { launchPricingNotice, pricingSummary } from "./pricingData";
 import type { LucideIcon } from "lucide-react";
 
 const steps: { icon: LucideIcon; color: string; title: string; text: string }[] = [
@@ -142,6 +143,17 @@ export default function CareCircleSharingDetail() {
               invite trusted family, friends, or caregivers into your Care Circle and choose
               exactly what each person can see or help manage.
             </p>
+            <p className="mt-4 text-sm leading-relaxed text-gray-soft sm:text-base">
+              Caregiver collaboration is included on every plan. The care user does not count
+              toward the caregiver allowance. {pricingSummary}{" "}
+              <Link
+                href="/pricing"
+                className="rounded-sm font-semibold text-teal-primary underline-offset-2 hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal-deep"
+              >
+                View plans
+              </Link>
+            </p>
+            <p className="mt-3 text-sm font-semibold text-teal-deep">{launchPricingNotice}</p>
           </div>
 
           <div className="mt-10 lg:mt-12">

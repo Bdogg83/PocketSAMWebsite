@@ -2,85 +2,106 @@ import type { Metadata } from "next";
 import { Container } from "@/components/ui";
 import SectionHeading from "@/components/SectionHeading";
 import PricingCards from "@/components/PricingCards";
+import PricingComparison from "@/components/PricingComparison";
+import {
+  launchPricingNotice,
+  pricingFaqs,
+  renewalNotice,
+} from "@/components/pricingData";
 
 export const metadata: Metadata = {
   title: "Caregiver App Pricing",
   description:
-    "Simple PocketSAM pricing: $9.99/month after a 30-day free trial, with up to 5 caregivers included and $1.99/month for each additional caregiver.",
+    "Planned PocketSAM launch pricing while the app is in beta: Free with one additional caregiver, Family for $7.99/month with up to five additional caregivers, or Family + AI for $14.99/month with unlimited caregivers and AI assistance.",
   alternates: {
     canonical: "/pricing",
   },
   openGraph: {
     title: "Caregiver App Pricing | PocketSAM",
     description:
-      "$9.99/month after a 30-day free trial. Up to 5 caregivers included.",
+      "Free, Family at $7.99/month, or Family + AI at $14.99/month. Planned launch pricing. PocketSAM is currently in beta.",
     url: "https://pocketsam.com/pricing",
   },
 };
 
-const faqs = [
-  {
-    question: "Is PocketSAM available yet?",
-    answer:
-      "PocketSAM is in beta testing now. The app and full website experience are coming soon. Join the waitlist through our contact page to get launch updates.",
-  },
-  {
-    question: "Is there a free trial?",
-    answer:
-      "Yes. PocketSAM includes a 30-day free trial. After the trial, the plan is $9.99/month.",
-  },
-  {
-    question: "Can I add multiple caregivers?",
-    answer:
-      "Yes. Your plan includes up to 5 caregivers. Additional caregivers beyond the first 5 are $1.99/month each.",
-  },
-  {
-    question: "Can I cancel anytime?",
-    answer: "Yes. You can cancel your PocketSAM subscription at any time.",
-  },
-  {
-    question: "Is this a medical device?",
-    answer:
-      "PocketSAM is designed to help people organize care information. It is not intended to diagnose, treat, or replace professional medical advice.",
-  },
-];
-
 export default function PricingPage() {
+  const faqJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: pricingFaqs.map((faq) => ({
+      "@type": "Question",
+      name: faq.question,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: faq.answer,
+      },
+    })),
+  };
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(faqJsonLd).replace(/</g, "\\u003c"),
+        }}
+      />
+
       <section className="bg-cream pt-8 pb-10 lg:pt-10 lg:pb-12">
         <Container>
-          <SectionHeading
-            as="h1"
-            centered
-            className="mb-0"
-            label="Pricing"
-            title="Simple, transparent pricing."
-            subtitle="One caregiver app plan with every feature. Up to 5 caregivers included."
-          />
+          <div className="mx-auto max-w-3xl text-center">
+            <SectionHeading
+              as="h1"
+              centered={false}
+              className="mb-4"
+              label="Pricing"
+              title="Care that fits your life."
+              subtitle="Start free with someone you trust. Bring more caregivers together with Family, or add AI assistance to make everyday care easier."
+            />
+            <p className="text-sm font-semibold text-teal-deep sm:text-base">
+              {launchPricingNotice}
+            </p>
+          </div>
         </Container>
       </section>
 
-      <PricingCards showHeading={false} />
+      <PricingCards />
 
-      <section className="pb-12 lg:pb-16">
+      <section className="pb-10 lg:pb-12">
         <Container>
-          <p className="mb-8 text-center text-sm text-gray-soft">
-            PocketSAM is in beta. Full launch and 30-day free trial coming soon.
+          <p className="mx-auto max-w-3xl text-center text-sm leading-relaxed text-gray-soft">
+            {renewalNotice}
           </p>
+        </Container>
+      </section>
 
-          <SectionHeading centered className="mb-4 lg:mb-6" title="Frequently asked questions" />
+      <PricingComparison />
+
+      <section className="scroll-mt-24 pb-12 lg:pb-16" aria-labelledby="pricing-faq-heading">
+        <Container>
+          <SectionHeading
+            centered
+            className="mb-4 lg:mb-6"
+            title={
+              <span id="pricing-faq-heading" className="scroll-mt-28">
+                Frequently asked questions
+              </span>
+            }
+          />
 
           <div className="mx-auto max-w-3xl space-y-3">
-            {faqs.map(({ question, answer }) => (
+            {pricingFaqs.map(({ question, answer }) => (
               <details
                 key={question}
                 className="group rounded-2xl border border-gray-border bg-white p-5 shadow-soft"
               >
-                <summary className="cursor-pointer list-none text-base font-semibold text-teal-deep marker:hidden [&::-webkit-details-marker]:hidden">
+                <summary className="cursor-pointer list-none rounded-lg text-teal-deep marker:hidden focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal-deep [&::-webkit-details-marker]:hidden">
                   <span className="flex items-center justify-between gap-4">
-                    {question}
-                    <span className="text-green-accent transition-transform group-open:rotate-45">
+                    <h3 className="text-base font-semibold text-teal-deep">{question}</h3>
+                    <span
+                      aria-hidden="true"
+                      className="text-green-accent transition-transform group-open:rotate-45"
+                    >
                       +
                     </span>
                   </span>
