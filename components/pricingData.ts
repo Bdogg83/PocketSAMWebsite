@@ -123,6 +123,7 @@ export const pricingPlans: PricingPlan[] = [
 export interface ComparisonRow {
   feature: string;
   values: Record<PlanKey, ComparisonValue>;
+  noteId?: string;
 }
 
 export interface ComparisonGroup {
@@ -169,6 +170,11 @@ export const comparisonGroups: ComparisonGroup[] = [
       { feature: "Manual journals and check-ins", values: allIncluded },
       { feature: "Hydration and food intake tracking", values: allIncluded },
       { feature: "Emergency information", values: allIncluded },
+      {
+        feature: "Doctor-ready reports",
+        values: allIncluded,
+        noteId: "doctor-ready-reports-note",
+      },
     ],
   },
   {

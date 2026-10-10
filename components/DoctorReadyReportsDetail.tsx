@@ -189,10 +189,9 @@ export default function DoctorReadyReportsDetail() {
               better prepared.
             </p>
             <p className="mt-4 text-sm leading-relaxed text-gray-soft sm:text-base">
-              These reports organize information already recorded in PocketSAM, such as check-ins,
-              medications, and wellness activity. They do not diagnose or recommend treatment.
-              AI-powered summaries, insights, and supported document extraction are included only
-              with PocketSAM Assistant.{" "}
+              These reports use information already saved in PocketSAM. They do not diagnose or
+              recommend treatment. AI-powered summaries, insights, and supported document
+              extraction are included only with PocketSAM Assistant.{" "}
               <Link
                 href="/pricing"
                 className="rounded-sm font-semibold text-teal-primary underline-offset-2 hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal-deep"

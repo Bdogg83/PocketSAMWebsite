@@ -90,7 +90,9 @@ export default function PricingPage() {
             </p>
             <p className="mt-3 text-sm leading-relaxed text-gray-soft">
               Individual caregiver accounts are included with PocketSAM Together and PocketSAM
-              Assistant. PocketSAM Personal does not include additional caregiver accounts.
+              Assistant. PocketSAM Personal does not include additional caregiver accounts. On
+              Together and Assistant, caregivers can be notified when a shared task is assigned or
+              needs attention, and completed tasks stay in a simple record.
             </p>
           </div>
         </Container>

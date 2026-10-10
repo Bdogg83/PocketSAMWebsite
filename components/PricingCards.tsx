@@ -12,7 +12,7 @@ export default function PricingCards() {
               key={plan.key}
               className="flex h-full flex-col rounded-3xl border border-gray-border bg-white p-6 shadow-soft sm:p-7"
             >
-              <h2 className="text-xl font-bold text-teal-deep lg:min-h-[3.5rem]">{plan.name}</h2>
+              <h2 className="text-xl font-bold text-teal-deep">{plan.name}</h2>
               <div className="mt-4 flex items-baseline gap-1">
                 <span className="text-4xl font-bold tracking-tight text-teal-deep">
                   {plan.price}
@@ -22,7 +22,7 @@ export default function PricingCards() {
                 )}
               </div>
               <p className="mt-3 font-semibold text-teal-deep lg:min-h-[3rem]">{plan.tagline}</p>
-              <p className="mt-2 text-sm leading-relaxed text-gray-soft lg:min-h-[6.5rem]">
+              <p className="mt-2 text-sm leading-relaxed text-gray-soft lg:min-h-[4.75rem]">
                 {plan.description}
               </p>
 

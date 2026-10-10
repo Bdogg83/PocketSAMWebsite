@@ -153,6 +153,17 @@ export default function CareTasksDetail() {
               tasks so everyone knows what needs to be done, who is helping, and what has already
               been completed when you are organizing care for a loved one.
             </p>
+            <p className="mt-4 text-sm leading-relaxed text-gray-soft sm:text-base">
+              Shared care tasks and caregiver assignment are included with PocketSAM Together and
+              PocketSAM Assistant. PocketSAM Personal does not include additional caregiver
+              accounts.{" "}
+              <Link
+                href="/pricing"
+                className="rounded-sm font-semibold text-teal-primary underline-offset-2 hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal-deep"
+              >
+                View plans
+              </Link>
+            </p>
           </div>
 
           <div className="mt-10 lg:mt-12">
