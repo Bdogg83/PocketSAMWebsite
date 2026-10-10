@@ -22,13 +22,14 @@ export default function PricingCards() {
                 )}
               </div>
               <p className="mt-3 font-semibold text-teal-deep lg:min-h-[3rem]">{plan.tagline}</p>
-              <p className="mt-2 text-sm leading-relaxed text-gray-soft lg:min-h-[4.5rem]">
+              <p className="mt-2 text-sm leading-relaxed text-gray-soft lg:min-h-[6.5rem]">
                 {plan.description}
               </p>
 
               <div className="mt-5 rounded-2xl bg-green-pale px-4 py-3 text-center">
                 <p className="text-sm font-semibold text-teal-deep">1 care user</p>
                 <p className="text-sm font-semibold text-teal-deep">{plan.caregiverLimit}</p>
+                <p className="text-sm font-semibold text-teal-deep">{plan.aiAvailability}</p>
               </div>
 
               <ul className="mt-5 space-y-2.5">

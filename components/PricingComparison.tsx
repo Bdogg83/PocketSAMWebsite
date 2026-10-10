@@ -48,9 +48,9 @@ export default function PricingComparison() {
           }
           subtitle={
             <>
-              Every plan includes caregiver collaboration and shared care tasks. Plans differ in
-              how many additional caregivers you can add. AI assistance is included only with{" "}
-              <span className="whitespace-nowrap">Family + AI</span>.
+              Personal includes tools for one person’s own care. Together and Assistant add
+              caregiver collaboration and shared care tasks. AI assistance is included only with{" "}
+              <span className="whitespace-nowrap">PocketSAM Assistant</span>.
             </>
           }
         />
@@ -65,18 +65,7 @@ export default function PricingComparison() {
                     key={row.feature}
                     className="rounded-2xl border border-gray-border bg-white p-4 shadow-soft"
                   >
-                    <p className="font-semibold text-teal-deep">
-                      {row.feature}
-                      {row.noteId && (
-                        <a
-                          href={`#${row.noteId}`}
-                          className="ml-1 rounded-sm text-teal-primary focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal-deep"
-                        >
-                          <span className="sr-only">{row.feature} note</span>
-                          <span aria-hidden="true">*</span>
-                        </a>
-                      )}
-                    </p>
+                    <p className="font-semibold text-teal-deep">{row.feature}</p>
                     <dl className="mt-3 space-y-2">
                       {pricingPlans.map((plan) => (
                         <div
@@ -100,7 +89,7 @@ export default function PricingComparison() {
         <div className="hidden overflow-x-auto lg:block">
           <table className="w-full border-separate border-spacing-0 text-left">
             <caption className="sr-only">
-              PocketSAM Free, Family, and Family + AI plan comparison
+              PocketSAM Personal, Together, and Assistant plan comparison
             </caption>
             <thead>
               <tr>
@@ -139,15 +128,6 @@ export default function PricingComparison() {
                       className="border-b border-gray-border bg-white px-4 py-3 text-sm font-medium text-teal-deep"
                     >
                       {row.feature}
-                      {row.noteId && (
-                        <a
-                          href={`#${row.noteId}`}
-                          className="ml-1 rounded-sm font-semibold text-teal-primary focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal-deep"
-                        >
-                          <span className="sr-only">{row.feature} note</span>
-                          <span aria-hidden="true">*</span>
-                        </a>
-                      )}
                     </th>
                     {pricingPlans.map((plan) => (
                       <td
@@ -165,17 +145,11 @@ export default function PricingComparison() {
         </div>
 
         <div className="mx-auto mt-6 max-w-3xl space-y-3 text-sm leading-relaxed text-gray-soft">
-          <p id="doctor-ready-reports-note" className="scroll-mt-28">
-            <span className="font-semibold text-teal-deep">* Doctor-ready reports. </span>
-            These reports organize information already recorded in PocketSAM, such as check-ins,
-            medications, and wellness activity. They do not diagnose or recommend treatment. AI
-            insights and supported document extraction are separate and are included only with
-            Family + AI.
-          </p>
           <p>
-            The care user does not count toward the caregiver allowance. Unlimited applies only
-            to additional caregivers on Family + AI. AI usage remains subject to usage and rate
-            limits.
+            The care user does not count toward the caregiver allowance. Unlimited applies to
+            additional caregiver accounts on PocketSAM Assistant, not to AI usage. AI usage is
+            subject to care-circle-level usage and rate controls. Proposed care changes are
+            reviewed and confirmed before they are saved.
           </p>
         </div>
       </Container>

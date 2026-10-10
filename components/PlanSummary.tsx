@@ -13,7 +13,7 @@ export default function PlanSummary() {
             id="plan-summary-heading"
             className="text-2xl font-bold tracking-tight text-teal-deep sm:text-3xl text-balance"
           >
-            Care that fits your life.
+            Care organized. Support connected.
           </h2>
           <p className="mx-auto mt-4 max-w-3xl text-sm leading-relaxed text-gray-soft sm:text-base">
             {pricingSummary}

@@ -12,14 +12,14 @@ import {
 export const metadata: Metadata = {
   title: "Caregiver App Pricing",
   description:
-    "Planned PocketSAM launch pricing while the app is in beta: Free with one additional caregiver, Family for $7.99/month with up to five additional caregivers, or Family + AI for $14.99/month with unlimited caregivers and AI assistance.",
+    "Planned PocketSAM launch pricing while the app is in beta: Personal is free for one care user, Together is $9.99/month with up to five additional caregivers, and Assistant is $14.99/month with unlimited caregivers and AI assistance.",
   alternates: {
     canonical: "/pricing",
   },
   openGraph: {
     title: "Caregiver App Pricing | PocketSAM",
     description:
-      "Free, Family at $7.99/month, or Family + AI at $14.99/month. Planned launch pricing. PocketSAM is currently in beta.",
+      "Personal is free, Together is $9.99/month, and Assistant is $14.99/month. Planned launch pricing. PocketSAM is currently in beta.",
     url: "https://pocketsam.com/pricing",
   },
 };
@@ -55,8 +55,8 @@ export default function PricingPage() {
               centered={false}
               className="mb-4"
               label="Pricing"
-              title="Care that fits your life."
-              subtitle="Start free with someone you trust. Bring more caregivers together with Family, or add AI assistance to make everyday care easier."
+              title="Care organized. Support connected."
+              subtitle="Start with free tools for your daily care. Bring your care team together, or let PocketSAM help turn everyday updates into organized care information."
             />
             <p className="text-sm font-semibold text-teal-deep sm:text-base">
               {launchPricingNotice}
@@ -67,11 +67,32 @@ export default function PricingPage() {
 
       <PricingCards />
 
-      <section className="pb-10 lg:pb-12">
+      <section className="pb-8 lg:pb-10">
         <Container>
           <p className="mx-auto max-w-3xl text-center text-sm leading-relaxed text-gray-soft">
             {renewalNotice}
           </p>
+        </Container>
+      </section>
+
+      <section className="pb-10 lg:pb-12" aria-labelledby="care-team-access-heading">
+        <Container>
+          <div className="mx-auto max-w-3xl rounded-3xl border border-gray-border bg-cream px-6 py-8 text-center sm:px-10">
+            <h2
+              id="care-team-access-heading"
+              className="text-2xl font-bold tracking-tight text-teal-deep sm:text-3xl text-balance"
+            >
+              Give your care team their own access.
+            </h2>
+            <p className="mt-4 text-sm leading-relaxed text-gray-soft sm:text-base">
+              Share care information with individual permissions and coordinate responsibilities
+              through shared care tasks.
+            </p>
+            <p className="mt-3 text-sm leading-relaxed text-gray-soft">
+              Individual caregiver accounts are included with PocketSAM Together and PocketSAM
+              Assistant. PocketSAM Personal does not include additional caregiver accounts.
+            </p>
+          </div>
         </Container>
       </section>
 
